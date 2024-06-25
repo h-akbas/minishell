@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/06/25 17:38:48 by hakbas           ###   ########.fr       */
+/*   Created: 2024/06/25 17:40:59 by hakbas            #+#    #+#             */
+/*   Updated: 2024/06/25 18:53:35 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 #include "minishell.h"
+#include <stdbool.h>
+#include "debug.h"
 
-int	main(int argc, char **argv, char **envp)
+void	init_data(t_data *data, char **envp)
 {
-	t_data	data;
-	
-	(void) argv;
-	
+	int	i;
 
-	if (argc == 1)
-	{
-		//TODO: set main signals
-		//TODO: init_data
-		init_data(&data, envp);
-		//TODO: init_shell
-		//TODO: clean_exit
-	}	
-	else
-	{
-		printf("Argc isn't 1\n"); //remove this before evo
-		return (EXIT_FAILURE);
-	}
+	errno = 0;
+	data->in_main_process = true;
+	data->last_status = EXIT_SUCCESS;
+	data->temp_files = NULL;
+	data->parsing_error = NULL;
+	i = 0;
+	while (i < MAX_ALLOC)
+		data->allocated_ptrs[i++] = NULL;
+	print_table(envp);
+	//data->env = init_env(envp, data); //TODO
+	//increment_shell_level(data); //TODO
 }
