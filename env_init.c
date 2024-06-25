@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 17:40:59 by hakbas            #+#    #+#             */
-/*   Updated: 2024/06/25 18:53:35 by hakbas           ###   ########.fr       */
+/*   Created: 2024/06/25 19:05:26 by hakbas            #+#    #+#             */
+/*   Updated: 2024/06/25 19:11:00 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <errno.h>
+#include "libft/libft.h"
 #include "minishell.h"
-#include <stdbool.h>
-#include "debug.h"
 
-void	init_data(t_data *data, char **envp)
+t_list	*init_env(char	**envp, t_data *data);
 {
-	int	i;
+	char	*eq;
+	char	*name;
+	char	*home;
+	t_list	*env_lst;
 
-	errno = 0;
-	data->in_main_process = true;
-	data->last_status = EXIT_SUCCESS;
-	data->temp_files = NULL;
-	data->parsing_error = NULL;
-	i = 0;
-	while (i < MAX_ALLOC)
-		data->allocated_ptrs[i++] = NULL;
-	print_table(envp);
-	//data->env = init_env(envp, data); //TODO
-	//increment_shell_level(data); //TODO
+	env_lst = NULL;
+	while (*envp)
+	{
+		eq = ft_strchr(*env, '=');
+		
+		envp++;
+	}
 }
