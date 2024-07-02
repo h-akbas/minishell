@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/06/25 18:47:39 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/06/26 17:35:35 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,11 @@
 //defines
 
 //typedef
-typedef enum	e_alloc
+typedef struct s_env
 {
-	CHECK,
-	SHELL,
-	PROMPT,
-	MAX_ALLOC
-}				t_alloc;
-
-typedef struct	s_data
-{
-	t_list		*env;
-	bool		in_main_process;
-	t_list		*allocated_ptrs[MAX_ALLOC];
-	char		*home;
-	int			last_status;
-	t_list		*temp_files;
-	char		*parsing_error;
-}				t_data;
-
+	char				**original_env;
+	char				***parsed_env;
+}	t_env;
 //function prototypes
-void		init_data(t_data *data, char **envp);
-
+int			init_data(t_env *env, char **envp);
 #endif

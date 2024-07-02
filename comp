@@ -1,1 +1,2 @@
-gcc -Wall -Wextra -Werror *.c -o test_prog
+gcc -Wall -Wextra -Werror -g  *.c -o test_prog ./libft/libft.a
+

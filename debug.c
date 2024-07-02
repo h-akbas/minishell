@@ -5,6 +5,7 @@
 
 
 
+#include "libft/libft.h"
 #include <stdio.h>
 
 void	print_table(char **table)
@@ -12,7 +13,16 @@ void	print_table(char **table)
 	int i = 0;
 	while (table[i])
 	{
-		printf("[%d]\t\t%s\n", i, table[i]);
+		printf("[%d]\t%s\n", i, table[i]);
 		i++;
+	}
+}
+
+void	print_list(t_list *list)
+{
+	while(list->content)
+	{
+		printf("%s\n", (char *)list->content);
+		list = list->next;
 	}
 }

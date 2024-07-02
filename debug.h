@@ -3,4 +3,7 @@
 ///
 //
 
+#include "libft/libft.h"
 void	print_table(char **table);
+void	ft_assert(int expression, int line_no, char *file_name);
+void	print_list(t_list *list);

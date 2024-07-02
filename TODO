@@ -1,1 +1,3 @@
-Makefile
+Create Makefile
+Init data
+	copy envp to linked list <data->env>
