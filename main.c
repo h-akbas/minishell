@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 12:27:28 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/02 13:41:43 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft/libft.h"
 #include "minishell.h"
 
-static int	init_minishell(t_env ms_env);
+static int	init_minishell(t_env *ms_env);
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -33,17 +33,19 @@ int	main(int argc, char **argv, char **envp)
 	return(exit_stat);
 }
 
-static int	init_minishell(t_env ms_env)
+static int	init_minishell(t_env *ms_env)
 {
 	int		exit_stat;
 	char	*input;
 	char	**cmds;
 
+	if (!ms_env)
+		return (EXIT_FAILURE);
 	exit_stat = EXIT_SUCCESS;
 	while (1)
 	{
-		handle_main_signals();
-		input = parse_input(ms_env);
+		init_main_signals();
+		input = parse_prompt(ms_env);
 		if (input_error(input, &exit_stat, ms_env))
 			continue ;
 		handle_expansions(&input, ms_env, exit_stat);
