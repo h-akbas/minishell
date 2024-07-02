@@ -2,7 +2,7 @@
 ///		This is file is for debugging purposes. Don't push it to project directory
 ///
 //
-
+//// deneme 
 
 
 #include "libft/libft.h"
