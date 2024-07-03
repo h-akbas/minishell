@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 21:08:45 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/03 15:50:06 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ char	*parse_prompt(t_env *ms_env);
 bool	quoting_error(char *str);
 bool	input_error(char *input, int *exit_stat, t_env *ms_env);
 
+
+void	handle_expansions(char **input, t_env *ms_env, int exit_stat);
+void	expand_vars(char **input, t_env *ms_env);
 void	expand_exit_stat(char **input, int exit_stat);
 bool	is_empty(char *str);
 bool	is_quote(char c);
