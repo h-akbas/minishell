@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_error.c                                      :+:      :+:    :+:   */
+/*   utils_quoting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/02 14:01:06 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 21:10:11 by hakbas           ###   ########.fr       */
+/*   Created: 2024/07/02 21:00:57 by hakbas            #+#    #+#             */
+/*   Updated: 2024/07/02 21:07:39 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft/libft.h"
 #include <stdbool.h>
-#include <stdlib.h>
 
-bool	input_error(char *input, int *exit_stat, t_env *ms_env)
+bool	quoting_error(char *str)
 {
-	int	ret;
+	char	open_quote;
 
-	ret = false;
-	if (is_empty(input))
-		ret = true;
-	else if (quoting_error(input))
-		ret = true;
-	else if (invalid_syntax(input))
+	open_quote = 0;
+	while (*str && !open_quote)
 	{
-		*exit_stat = 2;
-		ret = true;
+		if (*str == '\'' || *str == '"')
+			open_quote = *str;
+		str++;
 	}
-	else if (!handle_heredoc(input, exit_stat, ms_env))
-		ret = true;
-	if (ret == true)
-		free(input);
-	return (ret);
+	while (*str && open_quote)
+	{
+		if (*str && *str == open_quote)
+			open_quote = 0;
+		str++;
+	}
+	if (*str)
+		return (quoting_error(str));
+	else if (!open_quote)
+		return (false);
+	else
+	{
+		ft_putendl_fd("Unclosed quote!", 2);
+		return (true);
+	}
 }
