@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:17:21 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 15:00:08 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/03 15:57:04 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	expand_vars(char **input, t_env *ms_env)
 	char	*var_value;
 	int		size;
 
-	var_pos = get_var_pos(input);
+	var_pos = get_var_pos(*input);
 	if (var_pos)
 	{
 		size = 0;

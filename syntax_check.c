@@ -6,10 +6,11 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 21:10:53 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 21:25:19 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/03 16:15:55 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 #include <stdbool.h>
 
 static bool	redir_with_no_label(char *str);
@@ -55,5 +56,10 @@ static bool	empty_pipe(char *str)
 	if (!next_pipe)
 		return (false);
 	next_pipe++;
-	while 
+	while (*next_pipe == ' ' || *next_pipe == '\t')
+		next_pipe++;
+	if (*next_pipe == '|')
+		return (put_syntax_error("|"));
+	return (empty_pipe(next_pipe));
 }
+
