@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/03 16:29:54 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/05 14:28:23 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 //includes only if necessary
 # include <stdbool.h>
+# include <stddef.h>
 //defines
 # ifndef PATH_MAX
 #  define PATH_MAX 4096
@@ -56,5 +57,17 @@ bool	is_empty(char *str);
 bool	is_quote(char c);
 bool	has_pipe(char *str);
 bool	is_name_delim(char c);
+
+bool	str_equal(const char *str1, const char *str2);
+void	move_one_forward(char *str);
+size_t	arr_len(char **arr);
+
+void	print_error_msg(char *command, char *msg);
+void	exit_error(char *cmd, char *msg, int err);
+void	print_perror_msg(char *cmd, char *pmsg);
+void	exit_perror(char *cmd, char *pmsg, int err);
+void	print_varname_error(char *cmd, char *varname);
+
+
 
 #endif
