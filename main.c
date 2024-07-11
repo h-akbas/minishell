@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: ndogan <ndogan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 13:41:43 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/11 13:08:54 by ndogan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "minishell.h"
 
 static int	init_minishell(t_env *ms_env);
-
+//deneme
 int	main(int argc, char **argv, char **envp)
 {
 	int	exit_stat;
