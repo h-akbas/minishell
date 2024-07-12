@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:15:37 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/05 14:18:45 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/10 13:49:47 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 bool	str_equal(const char *str1, const char *str2)
 {
-	size_t	size;
-
-	if(!str1 || !str2)
-		return (false);
-	size = ft_strlen(str1);
-	if (size != ft_strlen(str2))
-		return (false);
-	return (ft_strncmp(str1, str2, size) == 0);
+	while (*str1 && *str2)
+	{
+		if (*str1 != *str2)
+			return (false);
+		str1++;
+		str2++;
+	}
+	return (*str1 == '\0' && *str2 == '\0');
 }
 
 void	move_one_forward(char *str)

@@ -6,11 +6,12 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 15:01:06 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 15:08:38 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/10 14:02:25 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
+#include <stdio.h>
 
 bool	is_empty(char *str)
 {
@@ -32,21 +33,18 @@ bool	is_quote(char c)
 
 bool	has_pipe(char *str)
 {
+	bool	sq;
+	bool	dq;
+
+	sq = false;
+	dq = false;
 	while (*str)
 	{
-		if (*str == '\'')
-		{
-			str++;
-			while (*str != '\'')
-				str++;
-		}
-		if (*str == '"')
-		{
-			str++;
-			while (*str != '"')
-				str++;
-		}
-		if (*str == '|')
+		if (*str == '\'' && !dq)
+			sq = !sq;
+		else if (*str == '"' && !sq)
+			dq = !dq;
+		else if (*str == '|' && !dq && !sq)
 			return (true);
 		str++;
 	}

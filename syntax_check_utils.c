@@ -6,12 +6,13 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:17:02 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/03 16:29:41 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/10 14:21:56 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdbool.h>
+#include <stdio.h>
 
 bool	invalid_token(char c)
 {
@@ -60,4 +61,93 @@ char	*get_next_pipe(char *str)
 		str++;
 	}
 	return (NULL);
+}
+
+char	*get_next_pipe2(char *str)
+{
+	bool	sq;
+	bool	dq;
+
+	sq = false;
+	dq = false;
+	while (*str)
+	{
+		if (*str == '\'' && !dq)
+			sq = !sq;
+		else if (*str == '"' && !dq)
+			dq = !dq;
+		else if (*str == '|' && !sq && !dq)
+			return (str);
+		str++;
+	}
+	return (NULL);
+}
+
+int main() {
+    char str1[] = "command1 | command2";
+    char str2[] = "command 'with | inside quotes' | command2";
+    char str3[] = "command \"with | inside quotes\" | command2";
+    char str4[] = "no pipe here";
+
+    char *pipe_pos;
+
+    // Testing get_next_pipe
+    pipe_pos = get_next_pipe(str1);
+    if (pipe_pos) {
+        printf("Next pipe in str1: %s\n", pipe_pos);
+    } else {
+        printf("No pipe found in str1\n");
+    }
+
+    pipe_pos = get_next_pipe(str2);
+    if (pipe_pos) {
+        printf("Next pipe in str2: %s\n", pipe_pos);
+    } else {
+        printf("No pipe found in str2\n");
+    }
+
+    pipe_pos = get_next_pipe(str3);
+    if (pipe_pos) {
+        printf("Next pipe in str3: %s\n", pipe_pos);
+    } else {
+        printf("No pipe found in str3\n");
+    }
+
+    pipe_pos = get_next_pipe(str4);
+    if (pipe_pos) {
+        printf("Next pipe in str4: %s\n", pipe_pos);
+    } else {
+        printf("No pipe found in str4\n");
+    }
+
+    // Testing get_next_pipe2
+    pipe_pos = get_next_pipe2(str1);
+    if (pipe_pos) {
+        printf("Next pipe in str1: %s\n", pipe_pos);
+    } else {
+        printf("No pipe found in str1\n");
+    }
+
+    pipe_pos = get_next_pipe2(str2);
+    if (pipe_pos) {
+        printf("Next pipe in str2: %s\n", pipe_pos);
+    } else {
+        printf("No pipe found in str2\n");
+    }
+
+    pipe_pos = get_next_pipe2(str3);
+    if (pipe_pos) {
+        printf("Next pipe in str3: %s\n", pipe_pos);
+    } else {
+        printf("No pipe found in str3\n");
+    }
+
+    pipe_pos = get_next_pipe2(str4);
+    if (pipe_pos) {
+        printf("Next pipe in str4: %s\n", pipe_pos);
+    } else {
+        printf("No pipe found in str4\n");
+    }
+
+    return 0;
 }

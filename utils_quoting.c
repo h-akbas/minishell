@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 21:00:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 21:07:39 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/10 14:08:55 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,23 @@
 
 bool	quoting_error(char *str)
 {
-	char	open_quote;
+	bool	sq;
+	bool	dq;
 
-	open_quote = 0;
-	while (*str && !open_quote)
+	sq = false;
+	dq = false;
+	while (*str)
 	{
-		if (*str == '\'' || *str == '"')
-			open_quote = *str;
+		if (*str == '\'' && !dq)
+			sq = !sq;
+		else if (*str == '"' && !sq)
+			dq = !dq;
 		str++;
 	}
-	while (*str && open_quote)
-	{
-		if (*str && *str == open_quote)
-			open_quote = 0;
-		str++;
-	}
-	if (*str)
-		return (quoting_error(str));
-	else if (!open_quote)
-		return (false);
-	else
+	if (dq || sq)
 	{
 		ft_putendl_fd("Unclosed quote!", 2);
 		return (true);
 	}
+	return (false);
 }
