@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndogan <ndogan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/11 13:08:54 by ndogan           ###   ########.fr       */
+/*   Updated: 2024/07/12 15:03:04 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,25 @@
 #include "minishell.h"
 
 static int	init_minishell(t_env *ms_env);
-//deneme
+
 int	main(int argc, char **argv, char **envp)
 {
-	int	exit_stat;
+	t_env	*ms_env;
 
-	exit_stat = EXIT_SUCCESS;
 	(void)argv;
 	if (argc > 1)
 	{
-		ft_putendl_fd("Invalid number of arguments.", 2);
-		exit_stat = EXIT_FAILURE;
+		ft_putendl_fd("Invalid number of arguments.", STDOUT_FILENO);
+		return (EXIT_FAILURE);
 	}
-	else
-		exit_stat = init_minishell(init_env(envp));
-	return(exit_stat);
+	ms_env = init_env(envp);
+	if (!ms_env)
+	{
+		ft_putendl_fd("Failed to create environment variables!", STDOUT_FILENO);
+		return (EXIT_FAILURE);
+	}
+	increment_shlvl(ms_env);
+	return (init_minishell(ms_env));
 }
 
 static int	init_minishell(t_env *ms_env)
@@ -39,8 +43,6 @@ static int	init_minishell(t_env *ms_env)
 	char	*input;
 	char	**cmds;
 
-	if (!ms_env)
-		return (EXIT_FAILURE);
 	exit_stat = EXIT_SUCCESS;
 	while (1)
 	{
@@ -60,4 +62,27 @@ static int	init_minishell(t_env *ms_env)
 		}
 	}
 	return (exit_stat);
+}
+
+static void	increment_shlvl(t_env *ms_env)
+{
+	int	shlvl;
+	char	*current_value;
+	char	*new_value;
+
+	current_value = get_env_value("SHLVL", ms_env);
+	if (!current_value)
+		shlvl = 1;
+	else
+	{
+		shlvl = ft_atoi(current_value);
+		if (shlvl < 0 || shlvl > 1000)
+			shlvl = 1;
+		else
+		 	shlvl += 1;
+	}
+	new_value = ft_itoa(shlvl);
+	if (!new_value)
+		return ;
+	en
 }
