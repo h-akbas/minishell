@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 13:41:55 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 13:59:46 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 21:53:05 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-static char	*fetch_prompt_str(t_env *ms_env);
+static char	*create_prompt_str(t_env *ms_env);
 
 char	*parse_prompt(t_env *ms_env)
 {
 	char	*input;
 	char	*prompt;
 
-	prompt = fetch_prompt_str(ms_env);
+	prompt = create_prompt_str(ms_env);
 	if (!prompt)
 		return (NULL);
 	input = readline(prompt);
@@ -42,13 +42,13 @@ static char	*fetch_prompt_str(t_env *ms_env)
 
 	user = get_env_value("USER", ms_env);
 	if (!user)
-		user = "UNKNOWN";
+		user = "unknown_user";
 	cwd	= get_env_value("CWD", ms_env);
 	if (!cwd)
-		cwd = "/UNKNOWN";
+		cwd = "/unknown_dir";
 	dir = ft_strrchr(cwd, '/') + 1;
 	if (!ft_strncmp(cwd, "/", 2))
-		dir = "ROOT";
+		dir = "root";
 	ft_bzero(prompt, ft_strlen(prompt));
 	ft_strlcat(prompt, user, PATH_MAX);
 	ft_strlcat(prompt, "@", PATH_MAX);

@@ -6,12 +6,13 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:17:02 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 21:46:02 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 21:47:36 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdbool.h>
+#include <unistd.h>
 
 bool	invalid_token(char c)
 {
@@ -20,10 +21,10 @@ bool	invalid_token(char c)
 
 bool	put_syntax_error(char *token)
 {
-	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd("synax error near unexpected token '", 2);
-	ft_putstr_fd(token, 2);
-	ft_putstr_fd("'\n", 2);
+	ft_putstr_fd("minishell: ", STDERR_FILENO);
+	ft_putstr_fd("synax error near unexpected token '", STDERR_FILENO);
+	ft_putstr_fd(token, STDERR_FILENO);
+	ft_putstr_fd("'\n", STDERR_FILENO);
 	return (true);
 }
 

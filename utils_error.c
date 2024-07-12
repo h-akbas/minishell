@@ -6,20 +6,21 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:20:58 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/05 14:43:14 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 21:48:53 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <readline/history.h>
+#include <unistd.h>
 
 void	print_error_msg(char *command, char *msg)
 {
-	ft_putstr_fd("minishell", 2);
-	ft_putstr_fd(command, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(msg, 2);
-	ft_putstr_fd("\n", 2);
+	ft_putstr_fd("minishell", STDERR_FILENO);
+	ft_putstr_fd(command, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(msg, STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
 void	exit_error(char *cmd, char *msg, int err)
@@ -32,9 +33,9 @@ void	exit_error(char *cmd, char *msg, int err)
 
 void	print_perror_msg(char *cmd, char *pmsg)
 {
-	ft_putstr_fd("minishell", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": ", 2);
+	ft_putstr_fd("minishell", STDERR_FILENO);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
 	perror(pmsg);
 }
 
@@ -48,9 +49,9 @@ void	exit_perror(char *cmd, char *pmsg, int err)
 
 void	print_varname_error(char *cmd, char *varname)
 {
-	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": `", 2);
-	ft_putstr_fd(varname, 2);
-	ft_putstr_fd("': not a valid identifier\n", 2);
+	ft_putstr_fd("minishell: ", STDERR_FILENO);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": `", STDERR_FILENO);
+	ft_putstr_fd(varname, STDERR_FILENO);
+	ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
 }
