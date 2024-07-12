@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:17:02 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 21:47:36 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 23:03:30 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,43 +40,18 @@ bool	unexpected_token(char *str)
 
 char	*get_next_pipe(char *str)
 {
-	if (!str || !*str)
-		return (NULL);
+	bool	single_quote;
+	bool	double_quote;
+
+	single_quote = false;
+	double_quote = false;
 	while (*str)
 	{
-		if (*str == '\'')
-		{
-			while (*str != '\'')
-				str++;
-			str++;
-		}
-		if (*str == '"')
-		{
-			while (*str != '"')
-				str++;
-			str++;
-		}
-		if (*str == '|')
-			return (str);
-		str++;
-	}
-	return (NULL);
-}
-
-char	*get_next_pipe2(char *str)
-{
-	bool	sq;
-	bool	dq;
-
-	sq = false;
-	dq = false;
-	while (*str)
-	{
-		if (*str == '\'' && !dq)
-			sq = !sq;
-		else if (*str == '"' && !dq)
-			dq = !dq;
-		else if (*str == '|' && !sq && !dq)
+		if (*str == '\'' && !double_quote)
+			single_quote = !single_quote;
+		else if (*str == '"' && !double_quote)
+			double_quote = !double_quote;
+		else if (*str == '|' && !single_quote && !double_quote)
 			return (str);
 		str++;
 	}

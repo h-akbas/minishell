@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 21:50:49 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 23:06:55 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	init_minishell(t_env *ms_env)
 	exit_stat = EXIT_SUCCESS;
 	while (1)
 	{
-		init_main_signals();
+		set_main_signals();
 		input = parse_prompt(ms_env);
 		if (input_error(input, &exit_stat, ms_env))
 			continue ;

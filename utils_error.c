@@ -6,13 +6,15 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:20:58 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 21:48:53 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 23:01:00 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <readline/history.h>
+#include <readline/readline.h>
 #include <unistd.h>
+#include "minishell.h"
 
 void	print_error_msg(char *command, char *msg)
 {

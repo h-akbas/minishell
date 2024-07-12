@@ -6,12 +6,11 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 15:01:06 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/10 14:02:25 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 22:59:40 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include <stdio.h>
 
 bool	is_empty(char *str)
 {

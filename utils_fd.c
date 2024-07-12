@@ -6,10 +6,11 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:36:30 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 18:12:24 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 22:59:46 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
 

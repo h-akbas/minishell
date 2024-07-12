@@ -6,14 +6,14 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:33:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 16:56:31 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 23:05:10 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 
-char	*get_next_redir_pos(char *str, char redir_c)
+char	*get_redir_pos(char *str, char redir_c)
 {
 	char	q;
 
@@ -49,6 +49,7 @@ char	get_next_redir(char *str)
 			q = '\0';
 		str++;
 	}
+	return ('\0');
 }
 
 void	redirect_fd(int fd1, int fd2)

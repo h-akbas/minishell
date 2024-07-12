@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:56:25 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 17:10:14 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 23:05:46 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	redirect_input (char *cmd)
 	if ((redir_in = get_redir_pos(cmd, '<')) == NULL)
 		return (1);
 	f_name = get_label_name(redir_in);
-	fd = open(f_name, O_RDONLY, );
+	fd = open(f_name, O_RDONLY, FD_CLOEXEC);
 	if (fd == -1)
 	{
 		print_perror_msg("open", f_name);

@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/05 14:28:23 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 23:07:36 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ char	*get_value_only(char *key_pair);
 char	*create_keypair(char *name, char *value);
 t_env	*init_env(char	**envp);
 void	append_list(char *key_pair, t_env **lst);
-void	init_main_signals(void);
+void	update_env_var(char *name, char *value, t_env *ms_env);
+void	free_env(t_env	**ms_env);
+
+void	set_main_signals(void);
+void	set_exec_signals(int cpid);
+void	set_heredoc_signals(int cpid);
 char	*parse_prompt(t_env *ms_env);
 
 bool	quoting_error(char *str);
@@ -69,5 +74,16 @@ void	exit_perror(char *cmd, char *pmsg, int err);
 void	print_varname_error(char *cmd, char *varname);
 
 
+char	*get_redir_pos(char *str, char redir_c);
+char	get_next_redir(char *str);
+void	redirect_fd(int fd1, int fd2);
+
+int		handle_heredoc(char *input, int *exit_stat, t_env *ms_env);
+char	*get_label_name(char *redir_str);
+void	move_one_forward(char *str);
+
+void	close_all_fds(void);
+
+char	**split_cmds(char *input);
 
 #endif
