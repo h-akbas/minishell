@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 21:00:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/10 14:08:55 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/12 20:28:22 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,9 @@ bool	quoting_error(char *str)
 		return (true);
 	}
 	return (false);
+}
+
+int	skip_quotes(char *str)
+{
+	
 }
