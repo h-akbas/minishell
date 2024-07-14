@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 14:55:00 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 15:57:17 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 18:06:52 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static int	exec_forked_extern(char **args, t_env *ms_env)
 	if (child_pid == -1)
 		print_perror_msg("fork", cmd);
 	else if (child_pid == 0)
-		execute_external(args, ms_env);
+		exec_external(args, ms_env);
 	else
 	 	return (wait_for_child(child_pid, true));
 }

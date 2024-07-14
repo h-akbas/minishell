@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 18:03:54 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 18:09:38 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ char	**split_args(char *cmd);
 
 bool	is_builtin(char *cmd);
 
+int		single_cmd(char	*cmd, t_env **ms_env);
 int		handle_input_redir(char *cmd, int org_fds[2]);
 int		handle_output_redir(char *cmd, int org_fds[2]);
 void	save_org_fd_in(int org_fds[2]);

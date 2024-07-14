@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 23:06:55 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 18:14:02 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	init_minishell(t_env *ms_env)
 		{
 			cmds = split_cmds(input);
 			free(input);
-			exit_stat = multiple_commands(cmds, &ms_env);
+			exit_stat = multiple_cmd(cmds, &ms_env);
 			free_matrix(cmds);
 		}
 	}
