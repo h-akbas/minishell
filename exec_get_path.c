@@ -6,13 +6,12 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:49:21 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 18:01:42 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 20:05:32 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "minishell.h"
-#include <complex.h>
 #include <stdbool.h>
 #include <unistd.h>
 

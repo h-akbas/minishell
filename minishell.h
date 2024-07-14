@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 19:46:52 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 20:06:06 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 # include <stdbool.h>
 # include <stddef.h>
 //defines
-# ifndef PATH_MAX
-#  define PATH_MAX 4096
-# endif
+# define PATH_MAX 4096
 
 # define IN 0
 # define OUT 1
