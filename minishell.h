@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 15:15:39 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 17:31:44 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@
 # define IN 0
 # define OUT 1
 # define NO_REDIR -1
+# define INTERRUPT 128
+# define CMD_NOT_FOUND 127
+# define PERMISSION_DENIED 126
+# define NOT_EXECUTABLE 126
+# define OUT_OF_RANGE 255
+# define BUILTIN_MISUSE 2
+# define FORK_ERROR -1
+# define CMD_NOT_FOUND_MSG	"command not found"
+# define NOT_EXECUTABLE_MSG "Is a directory"
 //typedefs
 typedef struct s_env
 {
@@ -41,6 +50,9 @@ t_env	*init_env(char	**envp);
 void	append_list(char *key_pair, t_env **lst);
 void	update_env_var(char *name, char *value, t_env *ms_env);
 void	free_env(t_env	**ms_env);
+void	free_array(char **arr);
+void	close_extra_fds(void);
+void	close_all_fds(void);
 
 void	set_main_signals(void);
 void	set_exec_signals(int cpid);
@@ -81,6 +93,10 @@ void	print_varname_error(char *cmd, char *varname);
 char	*get_redir_pos(char *str, char redir_c);
 char	get_next_redir(char *str);
 void	redirect_fd(int fd1, int fd2);
+int		redirect_input (char *cmd);
+int		redirect_output(char *cmd);
+void	redirect_heredoc(char *cmd, int hd_no);
+
 
 int		handle_heredoc(char *input, int *exit_stat, t_env *ms_env);
 char	*get_label_name(char *redir_str);
@@ -89,5 +105,17 @@ void	move_one_forward(char *str);
 void	close_all_fds(void);
 
 char	**split_cmds(char *input);
+
+char	**split_args(char *cmd);
+
+bool	is_builtin(char *cmd);
+
+int		handle_input_redir(char *cmd, int org_fds[2]);
+int		handle_output_redir(char *cmd, int org_fds[2]);
+void	save_org_fd_in(int org_fds[2]);
+void	save_org_fd_out(int org_fds[2]);
+int		exec_forked_builtin(char **args, t_env **ms_env);
+int		exec_builtin(char **args, t_env **ms_env);
+int		exec_external(char **args, t_env *ms_env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 14:55:00 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 15:23:21 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 15:57:17 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	single_cmd(char	*cmd, t_env **ms_env)
 		free(cmd);
 		return (EXIT_FAILURE);
 	}
-	if (args = split_args(cmd) == NULL)
+	if ((args = split_args(cmd)) == NULL)
 	{
 		free(cmd);
 		return (EXIT_FAILURE);
