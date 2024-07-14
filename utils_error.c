@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:20:58 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 23:01:00 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 19:46:29 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_error_msg(char *command, char *msg)
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
-void	exit_error(char *cmd, char *msg, int err)
+void	exit_with_error(char *cmd, char *msg, int err)
 {
 	print_error_msg(cmd, msg);
 	close_all_fds();

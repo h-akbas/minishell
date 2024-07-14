@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 19:13:49 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 19:46:52 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	expand_vars(char **input, t_env *ms_env);
 void	expand_exit_stat(char **input, int exit_stat);
 bool	valid_varname(char *str);
 bool	is_varname(char c);
+long long	ft_atoll(const char *str);
 
 bool	invalid_syntax(char *str);
 bool	is_empty(char *str);
@@ -85,7 +86,7 @@ void	move_one_forward(char *str);
 size_t	arr_len(char **arr);
 
 void	print_error_msg(char *command, char *msg);
-void	exit_error(char *cmd, char *msg, int err);
+void	exit_with_error(char *cmd, char *msg, int err);
 void	print_perror_msg(char *cmd, char *pmsg);
 void	exit_perror(char *cmd, char *pmsg, int err);
 void	print_varname_error(char *cmd, char *varname);
