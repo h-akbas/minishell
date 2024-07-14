@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 23:07:36 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 15:15:39 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # ifndef PATH_MAX
 #  define PATH_MAX 4096
 # endif
+
+# define IN 0
+# define OUT 1
+# define NO_REDIR -1
 //typedefs
 typedef struct s_env
 {
