@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 17:31:44 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/14 18:03:54 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*create_keypair(char *name, char *value);
 t_env	*init_env(char	**envp);
 void	append_list(char *key_pair, t_env **lst);
 void	update_env_var(char *name, char *value, t_env *ms_env);
+char	**ms_env_to_envp(t_env *ms_env);
 void	free_env(t_env	**ms_env);
 void	free_array(char **arr);
 void	close_extra_fds(void);
@@ -117,5 +118,6 @@ void	save_org_fd_out(int org_fds[2]);
 int		exec_forked_builtin(char **args, t_env **ms_env);
 int		exec_builtin(char **args, t_env **ms_env);
 int		exec_external(char **args, t_env *ms_env);
+char	*get_path(char *cmd, t_env *ms_env);
 
 #endif
