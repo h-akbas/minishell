@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 20:06:06 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 13:31:09 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ bool	has_pipe(char *str);
 bool	is_name_delim(char c);
 
 bool	str_equal(const char *str1, const char *str2);
-void	move_one_forward(char *str);
 size_t	arr_len(char **arr);
 
 void	print_error_msg(char *command, char *msg);
