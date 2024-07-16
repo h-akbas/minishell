@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 14:21:02 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 19:03:41 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ bool		is_name_delim(char c);
 bool		str_equal(const char *str1, const char *str2);
 size_t		arr_len(char **arr);
 
-void		print_error_msg(char *command, char *msg);
+int			print_error_msg(char *command, char *msg);
 void		exit_with_error(char *cmd, char *msg, int err);
 void		print_perror_msg(char *cmd, char *pmsg);
 void		exit_perror(char *cmd, char *pmsg, int err);
@@ -123,5 +123,7 @@ void		quit_child(char **cmds, t_env **ms_env);
 int			wait_for_child(int cpid, bool is_last_child);
 int			wait_for_children(int children_pid[1024]);
 void		handle_pipe(int fd_out, char *cur_cmd, char **cmds);
+
+void		update_wd(t_env *ms_env);
 
 #endif

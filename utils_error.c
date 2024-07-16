@@ -6,23 +6,25 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:20:58 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 19:46:29 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 18:24:07 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <readline/history.h>
 #include <readline/readline.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "minishell.h"
 
-void	print_error_msg(char *command, char *msg)
+int	print_error_msg(char *command, char *msg)
 {
 	ft_putstr_fd("minishell", STDERR_FILENO);
 	ft_putstr_fd(command, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putstr_fd(msg, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
+	return (EXIT_SUCCESS);
 }
 
 void	exit_with_error(char *cmd, char *msg, int err)
