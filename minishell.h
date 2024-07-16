@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 19:03:41 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 19:52:47 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,12 @@ int			wait_for_children(int children_pid[1024]);
 void		handle_pipe(int fd_out, char *cur_cmd, char **cmds);
 
 void		update_wd(t_env *ms_env);
+int			cd(char **args, t_env *ms_env);
+int			echo(char **args);
+int			env(t_env *ms_env);
+int			builtin_exit(char **args, t_env **ms_env);
+int			builtin_export(char **args, t_env **ms_env);
+int			pwd(void);
+int			unset(char **args, t_env **ms_env);
 
 #endif

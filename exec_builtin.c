@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:42:15 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 16:54:46 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 19:53:28 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ int	exec_builtin(char **args, t_env **ms_env)
 	else if (str_equal(cmd, "pwd"))
 		return (pwd());
 	else if (str_equal(cmd, "env"))
-		return (env(ms_env));
+		return (env(*ms_env));
 	else if (str_equal(cmd, "export"))
-		return (export_builtin(args, ms_env));
+		return (builtin_export(args, ms_env));
 	else if (str_equal(cmd, "unset"))
 		return (unset(args, ms_env));
 	else if (str_equal(cmd, "cd"))
-		return (cd(args, ms_env));
+		return (cd(args, *ms_env));
 	else if (str_equal(cmd, "exit"))
-		return (exit_builtin(args, ms_env));
+		return (builtin_exit(args, ms_env));
 	else
 		return (EXIT_FAILURE);
 }

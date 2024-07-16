@@ -6,12 +6,13 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:28:22 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 19:45:27 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 19:50:24 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdbool.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 static void	print_echo(char **str, int *index, bool new_line);
@@ -41,6 +42,7 @@ int	echo(char **args)
 		break ;
 	}
 	print_echo(args, &i, new_line);
+	return (EXIT_SUCCESS);
 }
 
 static void	print_echo(char **str, int *index, bool new_line)
