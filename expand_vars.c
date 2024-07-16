@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:17:21 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 14:10:36 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 22:56:33 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ static void	create_first_part(char *first_part, char **input, char *var)
 	else
 		first_part = ft_strjoin(*input, var);
 }
+
+//TODO: Burada $HOME gibi env değişkenleri echo edildiğinde segfault alınmakta. 
 
 static void	update_input(char **input, char *var, char *second_part)
 {

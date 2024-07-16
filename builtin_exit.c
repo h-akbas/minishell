@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:32:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 14:22:30 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 22:21:26 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ int	builtin_exit(char **args, t_env **ms_env)
 {
 	int	exit_stat;
 
+	exit_stat = EXIT_SUCCESS;
 	rl_clear_history();
 	free_env(ms_env);
 	ft_putendl_fd("exit", STDOUT_FILENO);
 	close_all_fds();
-	exit_stat = ft_atoll(args[1]);
+	if (args[1])
+		exit_stat = ft_atoll(args[1]);
 	free_array(args);
 	exit(exit_stat);
 }

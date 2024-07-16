@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:56:46 by hakbas            #+#    #+#             */
-/*   Updated: 2023/10/23 15:28:45 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 22:40:14 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,29 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len1;
-	size_t	len2;
-	size_t	total;
 	char	*str;
+	int		str_size;
+	int		i;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	total = len1 + len2;
-	str = (char *)malloc(sizeof(char) * total + 1);
-	if (str)
+	if (!s1 || !s2)
+		return (NULL);
+	str_size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = malloc(sizeof(char) * str_size);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (*s1)
 	{
-		ft_strlcpy(str, s1, len1 + 1);
-		ft_strlcat(str + len1, s2, total + 1);
+		str[i] = *s1;
+		s1++;
+		i++;
 	}
-	return (str);
+	while (*s2)
+	{
+		str[i] = *s2;
+		s2++;
+		i++;
+	}
+	str[i] = '\0';
+	return (&str[0]);
 }
