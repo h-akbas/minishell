@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:27:27 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 19:45:51 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 23:28:07 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ int	cd(char **args, t_env *ms_env)
 	}
 	if (chdir(path) != 0)
 	{
-		free(path);
+		if (is_dir_flag || home_subdir)
+			free(path);
 		print_perror_msg("cd", args[1]);
 		return (EXIT_FAILURE);
 	}
-	free(path);
+	if (is_dir_flag || home_subdir)
+		free(path);
 	update_wd(ms_env);
 	return (EXIT_SUCCESS);
 }
@@ -84,7 +86,7 @@ char	*get_cd_path(char **args, t_env *ms_env, bool home_subdir, \
 	else if (is_dir_flag)
 		path = parse_dir_name(args);
 	else
-		path = ft_strdup(args[1]);
+		path = args[1];
 	return (path);
 }
 
