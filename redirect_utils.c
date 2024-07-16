@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:33:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 23:05:10 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:08:47 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*get_redir_pos(char *str, char redir_c)
 		else if (*str == q)
 			q = '\0';
 		else if (*str == redir_c && q == '\0')
-			return str;
+			return (str);
 		str++;
 	}
 	return (NULL);

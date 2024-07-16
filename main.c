@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 19:17:00 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:27:59 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	init_minishell(t_env *ms_env)
 
 static void	increment_shlvl(t_env *ms_env)
 {
-	int	shlvl;
+	int		shlvl;
 	char	*current_value;
 	char	*new_value;
 
@@ -80,7 +80,7 @@ static void	increment_shlvl(t_env *ms_env)
 		if (shlvl < 0 || shlvl > 1000)
 			shlvl = 1;
 		else
-		 	shlvl += 1;
+			shlvl += 1;
 	}
 	new_value = ft_itoa(shlvl);
 	if (!new_value)

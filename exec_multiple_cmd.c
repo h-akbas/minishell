@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 18:10:07 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 18:26:31 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:30:12 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	save_org_fds(int org_fds[2])
 static void	handle_redirects(char *cmd, char **cmds, t_env **ms_env)
 {
 	char	redir;
-	
+
 	redir = get_next_redir(cmd);
 	while (redir)
 	{
@@ -80,7 +80,7 @@ static void	exec_forked_cmd(char *cmd, char **cmds, t_env **ms_env)
 	if (is_builtin(args[0]))
 		exec_forked_builtin(args, ms_env);
 	else
-	 	exec_external(args, *ms_env);
+		exec_external(args, *ms_env);
 }
 
 static void	restore_org_fds(int org_fds[2])

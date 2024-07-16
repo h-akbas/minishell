@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 18:32:29 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 18:35:58 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:09:38 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	*init_children_pid(char **cmds)
 {
 	int		*children_pid;
 	size_t	size;
-	
+
 	size = sizeof(int) * (arr_len(cmds) + 1);
 	children_pid = malloc(size);
 	if (!children_pid)

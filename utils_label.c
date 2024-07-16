@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 18:26:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 20:13:36 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:07:53 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	get_name_end(char *name)
 		else if (name[i] == '"')
 		{
 			move_one_forward(&name[i]);
-			while(name[i] && name[i] != '"')
+			while (name[i] && name[i] != '"')
 				i++;
 			move_one_forward(&name[i]);
 		}
@@ -42,8 +42,8 @@ static int	get_name_end(char *name)
 
 char	*get_label_name(char *redir_str)
 {
-	int	start;
-	int	end;
+	int		start;
+	int		end;
 	char	*name;
 	char	*remaining;
 

@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:55:02 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 20:24:15 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:33:02 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,29 @@ void	set_main_signals(void)
 
 void	set_exec_signals(int cpid)
 {
-	struct sigaction sa;
+	struct sigaction	sa;
 
 	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
 	if (cpid == 0)
 		sa.sa_handler = SIG_DFL;
 	else
-	 	sa.sa_handler = SIG_IGN;
+		sa.sa_handler = SIG_IGN;
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa, NULL);
 }
 
 void	set_heredoc_signals(int cpid)
 {
-	struct sigaction sa_sigint;
-	struct sigaction sa_sigquit;
+	struct sigaction	sa_sigint;
+	struct sigaction	sa_sigquit;
 
 	sa_sigint.sa_flags = 0;
 	sigemptyset(&sa_sigint.sa_mask);
 	if (cpid == 0)
 		sa_sigint.sa_handler = SIG_DFL;
 	else
-	 	sa_sigint.sa_handler = SIG_IGN;
+		sa_sigint.sa_handler = SIG_IGN;
 	sigaction(SIGINT, &sa_sigint, NULL);
 	sa_sigquit.sa_flags = 0;
 	sigemptyset(&sa_sigquit.sa_mask);

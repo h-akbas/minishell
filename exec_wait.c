@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 18:38:11 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 18:56:22 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:31:33 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	handle_sigint(int status, bool is_last_child);
 int	wait_for_child(int cpid, bool is_last_child)
 {
 	int	status;
-	
+
 	if (cpid == -1)
 		return (EXIT_FAILURE);
 	if (waitpid(cpid, &status, 0) == -1)

@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:17:21 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/03 15:57:04 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:10:36 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 static char	*get_var_pos(char *input);
-static void create_first_part(char *first_part, char **input, char *var);
+static void	create_first_part(char *first_part, char **input, char *var);
 static void	update_input(char **input, char *var, char *second_part);
 
 void	expand_vars(char **input, t_env *ms_env)
@@ -67,7 +67,7 @@ static char	*get_var_pos(char *input)
 	return (NULL);
 }
 
-static void create_first_part(char *first_part, char **input, char *var)
+static void	create_first_part(char *first_part, char **input, char *var)
 {
 	if (!*input[0] && !var)
 		first_part = ft_strdup("");
@@ -76,7 +76,7 @@ static void create_first_part(char *first_part, char **input, char *var)
 	else if (!var)
 		first_part = ft_strdup(*input);
 	else
-	 	first_part = ft_strjoin(*input, var);
+		first_part = ft_strjoin(*input, var);
 }
 
 static void	update_input(char **input, char *var, char *second_part)
@@ -96,7 +96,7 @@ static void	update_input(char **input, char *var, char *second_part)
 	{
 		free(first_part);
 		free(*input);
-		first_part  = NULL;
+		first_part = NULL;
 		*input = NULL;
 		return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:32:14 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 18:55:10 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:32:01 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	append_list(char *key_pair, t_env **lst)
 	t_env	*tmp;
 
 	new_env = (t_env *)malloc(sizeof(t_env));
-	if(!new_env)
+	if (!new_env)
 		return ;
 	new_env->key_pair = ft_strdup(key_pair);
-	if(new_env->key_pair == NULL)
+	if (new_env->key_pair == NULL)
 	{
 		free(new_env);
 		return ;
@@ -62,4 +62,3 @@ void	append_list(char *key_pair, t_env **lst)
 		tmp = tmp->next;
 	tmp->next = new_env;
 }
-

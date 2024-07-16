@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:07:45 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 19:12:56 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:25:46 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	handle_pipe(int fd_out, char *cur_cmd, char **cmds)
 	bool		has_next_cmd;
 	char		*last_cmd;
 	static int	pipe_fds[2];
-	
+
 	last_cmd = cmds[arr_len(cmds) - 1];
 	is_first_cmd = cur_cmd == cmds[0];
 	has_next_cmd = cur_cmd != last_cmd;

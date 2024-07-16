@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 18:12:51 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 18:14:01 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:16:14 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_array(char **arr)
 	if (!arr)
 		return ;
 	i = 0;
-	while(arr[i])
+	while (arr[i])
 	{
 		free(arr[i]);
 		arr[i] = NULL;

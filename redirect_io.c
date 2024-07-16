@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:56:25 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 23:05:46 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:12:55 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ int	redirect_output(char *cmd)
 	int		fd;
 	int		o_flags;
 
-	if ((redir_out = get_redir_pos(cmd, '>')) == NULL)
-		return (1);
+	redir_out = get_redir_pos(cmd, '>');
 	if (redir_out[1] == '>')
 		o_flags = O_WRONLY | O_CREAT | O_APPEND;
 	else
-	 	o_flags = O_WRONLY | O_CREAT | O_TRUNC;
+		o_flags = O_WRONLY | O_CREAT | O_TRUNC;
 	f_name = get_label_name(redir_out);
 	fd = open(f_name, o_flags, 0644);
 	if (fd == 1)
@@ -43,14 +42,13 @@ int	redirect_output(char *cmd)
 	return (1);
 }
 
-int	redirect_input (char *cmd)
+int	redirect_input(char *cmd)
 {
 	char	*redir_in;
 	char	*f_name;
 	int		fd;
 
-	if ((redir_in = get_redir_pos(cmd, '<')) == NULL)
-		return (1);
+	redir_in = get_redir_pos(cmd, '<');
 	f_name = get_label_name(redir_in);
 	fd = open(f_name, O_RDONLY, FD_CLOEXEC);
 	if (fd == -1)

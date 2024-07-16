@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 14:55:00 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 18:06:52 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:29:21 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static int 	handle_redirs(char *cmd, int org_fds[2]);
+static int	handle_redirs(char *cmd, int org_fds[2]);
 static void	restore_org_fds(int org_fds[2]);
 static int	exec_forked_extern(char **args, t_env *ms_env);
 
@@ -31,7 +31,8 @@ int	single_cmd(char	*cmd, t_env **ms_env)
 		free(cmd);
 		return (EXIT_FAILURE);
 	}
-	if ((args = split_args(cmd)) == NULL)
+	args = split_args(cmd);
+	if (!args)
 	{
 		free(cmd);
 		return (EXIT_FAILURE);
@@ -46,10 +47,10 @@ int	single_cmd(char	*cmd, t_env **ms_env)
 	return (stat);
 }
 
-static int 	handle_redirs(char *cmd, int org_fds[2])
+static int	handle_redirs(char *cmd, int org_fds[2])
 {
 	char	redir;
-	
+
 	org_fds[IN] = NO_REDIR;
 	org_fds[OUT] = NO_REDIR;
 	redir = get_next_redir(cmd);
@@ -81,7 +82,7 @@ static int	exec_forked_extern(char **args, t_env *ms_env)
 {
 	int		child_pid;
 	char	*cmd;
-	
+
 	cmd = args[0];
 	child_pid = fork();
 	set_exec_signals(child_pid);
@@ -90,5 +91,6 @@ static int	exec_forked_extern(char **args, t_env *ms_env)
 	else if (child_pid == 0)
 		exec_external(args, ms_env);
 	else
-	 	return (wait_for_child(child_pid, true));
+		return (wait_for_child(child_pid, true));
+	exit (EXIT_FAILURE);
 }

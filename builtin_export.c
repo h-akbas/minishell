@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:51:26 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 20:01:07 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:11:01 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	builtin_export(char **args, t_env **ms_env)
 		else if (get_env_node(varname, *ms_env))
 			update_env_var(varname, get_value_only(key_pair), *ms_env);
 		else
-		 	append_list(key_pair, ms_env);
+			append_list(key_pair, ms_env);
 		free(varname);
 		args++;
 	}

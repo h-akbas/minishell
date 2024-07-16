@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:17:19 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/02 14:37:15 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:14:21 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static char	*get_exit_stat_pos(char *input)
 	}
 	return (NULL);
 }
+
 /*
 	check this function in case of error with memory or leaks
 	because added null checks can break the calling functions

@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 18:17:46 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 18:25:04 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:30:24 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static bool	ft_isspace(char c)
 {
 	return (c == 32 || (c >= 9 && c <= 13));
 }
-
 
 long long	ft_atoll(const char *str)
 {

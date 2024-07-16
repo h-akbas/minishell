@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:07:51 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/04 15:33:34 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:21:35 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static char	*get_heredoc_pos(char *str)
 	}
 	return (NULL);
 }
+
 static char	*temp_filename(int hd_no)
 {
 	char	filename[30];

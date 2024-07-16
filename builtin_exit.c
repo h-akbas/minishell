@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:32:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 19:47:04 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:22:30 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	check_args_error(char **args);
 int	builtin_exit(char **args, t_env **ms_env)
 {
 	int	exit_stat;
-	
+
 	rl_clear_history();
 	free_env(ms_env);
 	ft_putendl_fd("exit", STDOUT_FILENO);
@@ -63,7 +63,7 @@ static bool	fits_in_long_long(char *str)
 static void	check_args_error(char **args)
 {
 	char	*exit_stat;
-	
+
 	if (!args || !args[1])
 	{
 		if (args)

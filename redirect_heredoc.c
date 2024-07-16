@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:21:11 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 23:06:42 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:25:28 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	redirect_heredoc(char *cmd, int hd_no)
 	int		tmp_fd;
 	char	*hd_pos;
 
-	if (!(f_name = tmp_filename(hd_no)))
+	f_name = tmp_filename(hd_no);
+	if (!f_name)
 		return ;
 	tmp_fd = open(f_name, O_RDONLY);
 	if (tmp_fd == -1)

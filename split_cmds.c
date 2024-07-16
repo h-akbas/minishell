@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 21:53:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 22:39:41 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:13:23 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	restore_pipes(char **exec_cmds);
 
 char	**split_cmds(char *input)
 {
-	char **cmds;
+	char	**cmds;
 
 	if (!input)
 		return (NULL);

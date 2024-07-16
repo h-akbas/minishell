@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:58:53 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 17:22:16 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 14:33:16 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	exec_external(char **args, t_env *ms_env)
 
 static bool	is_folder(char *cmd)
 {
-	struct stat statbuf;
+	struct stat	statbuf;
 
 	if (stat(cmd, &statbuf) != 0)
 		return (false);
@@ -69,7 +69,7 @@ static bool	is_folder(char *cmd)
 static void	handle_execve_err(char **args, char *path, char **envp)
 {
 	int	err;
-	
+
 	err = EXIT_FAILURE;
 	print_perror_msg("execve", args[0]);
 	if (access(path, F_OK))
