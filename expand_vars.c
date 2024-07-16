@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:17:21 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 22:56:33 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/16 23:22:05 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 static char	*get_var_pos(char *input);
-static void	create_first_part(char *first_part, char **input, char *var);
+static void	create_first_part(char **first_part, char **input, char *var);
 static void	update_input(char **input, char *var, char *second_part);
 
 void	expand_vars(char **input, t_env *ms_env)
@@ -34,7 +34,7 @@ void	expand_vars(char **input, t_env *ms_env)
 		var_name = ft_substr(var_pos, 1, size);
 		*var_pos = '\0';
 		var_value = get_env_value(var_name, ms_env);
-		update_input(input, var_value, var_pos + size + 1);
+		update_input(input, var_value, (var_pos + size + 1));
 		free (var_name);
 		expand_vars(input, ms_env);
 	}
@@ -67,29 +67,29 @@ static char	*get_var_pos(char *input)
 	return (NULL);
 }
 
-static void	create_first_part(char *first_part, char **input, char *var)
+static void	create_first_part(char **first_part, char **input, char *var)
 {
 	if (!*input[0] && !var)
-		first_part = ft_strdup("");
+		*first_part = ft_strdup("");
 	else if (!*input[0] && var)
-		first_part = ft_strdup(var);
+		*first_part = ft_strdup(var);
 	else if (!var)
-		first_part = ft_strdup(*input);
+		*first_part = ft_strdup(*input);
 	else
-		first_part = ft_strjoin(*input, var);
+		*first_part = ft_strjoin(*input, var);
 }
 
-//TODO: Burada $HOME gibi env değişkenleri echo edildiğinde segfault alınmakta. 
+//TODO: Burada $HOME gibi env değişkenleri echo edildiğinde segfault alınmakta.
 
 static void	update_input(char **input, char *var, char *second_part)
 {
 	char	*first_part;
 	char	*updated_input;
 
-	create_first_part(first_part, input, var);
+	create_first_part(&first_part, input, var);
 	if (!first_part)
 	{
-		free (*input);
+		free(*input);
 		*input = NULL;
 		return ;
 	}
