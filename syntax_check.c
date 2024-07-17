@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 21:10:53 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 14:08:14 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/17 13:41:07 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ static bool	redir_with_no_label(char *str)
 	if (redir_pos[0] == '<' && redir_pos[1] == '<')
 		redir_pos++;
 	else if (redir_pos[0] == '>' && redir_pos[1] == '>')
+		redir_pos++;
+	redir_pos++;
+	while (*redir_pos == ' ' || *redir_pos == '\t')
 		redir_pos++;
 	if (*redir_pos == '\0')
 		return (put_syntax_error("newline"));

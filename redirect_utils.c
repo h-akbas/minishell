@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:33:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 23:45:15 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/17 13:11:33 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ char	get_next_redir(char *str)
 
 void	redirect_fd(int fd1, int fd2)
 {
-	dup2(fd1, fd2);
-	close(fd1);
+	if (dup2(fd1, fd2) == -1)
+		perror("dup2");
+	if (close(fd1) == -1)
+		perror("close");
 }
 
 void	redirect_io_fds(int fd_in, int fd_out)
