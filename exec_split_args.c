@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:23:39 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/14 15:58:40 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/18 14:49:59 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ char	**split_args(char *cmd)
 
 static bool	has_quotes(char *cmd)
 {
-	while (*cmd)
+	if (!cmd)
+		return (false);
+	while (*cmd && cmd)
 	{
 		if (is_quote(*cmd))
 			return (true);
@@ -48,21 +50,20 @@ static bool	has_quotes(char *cmd)
 
 static void	replace_spaces(char *cmd, char delim)
 {
-	while (*cmd)
+	while (*cmd && *cmd != delim)
+		cmd++;
+	if (*cmd)
+		cmd++;
+	while (*cmd && *cmd != delim)
 	{
-		while (*cmd && *cmd != delim)
-			cmd++;
-		if (*cmd)
-			cmd++;
-		while (*cmd && *cmd != delim)
-		{
-			if (*cmd == ' ')
-				*cmd = -1;
-			cmd++;
-		}
-		if (!*cmd)
-			break ;
+		if (*cmd == ' ')
+			*cmd = -1;
+		cmd++;
 	}
+	if (*cmd)
+		cmd++;
+	if (*cmd)
+		replace_spaces(cmd, delim);
 }
 
 static void	remove_quotes(char *cmd)
@@ -91,17 +92,16 @@ static void	restore_spaces(char **args)
 {
 	char	*cmd;
 
-	while (args)
+	while (*args)
 	{
 		cmd = *args;
+		while (*cmd)
 		{
-			while (*cmd)
-			{
-				if (*cmd == -1)
-					*cmd = ' ';
-				cmd++;
-			}
+			if (*cmd == -1)
+				*cmd = ' ';
+			cmd++;
 		}
 		args++;
 	}
+	return ;
 }

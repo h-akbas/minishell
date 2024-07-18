@@ -6,11 +6,12 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 18:10:07 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/16 14:30:12 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/18 14:35:06 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -50,7 +51,12 @@ int	multiple_cmd(char **cmds, t_env **ms_env)
 static void	save_org_fds(int org_fds[2])
 {
 	org_fds[0] = dup(STDIN_FILENO);
+	if (org_fds[0] == -1)
+		perror("dup stdin");
 	org_fds[1] = dup(STDOUT_FILENO);
+	if (org_fds[1] == -1)
+		perror("dup stdout");
+
 }
 
 static void	handle_redirects(char *cmd, char **cmds, t_env **ms_env)

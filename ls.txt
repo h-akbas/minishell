@@ -1,0 +1,3 @@
+After: fd1: 4, fd2: 1 
+test
+Before: fd1: 3, fd2: 1 
