@@ -6,10 +6,11 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:33:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/18 14:31:15 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/19 06:16:38 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 #include <stdio.h>
 #include <unistd.h>
 
@@ -54,12 +55,13 @@ char	get_next_redir(char *str)
 
 void	redirect_fd(int fd1, int fd2)
 {
-	printf("Before: fd1: %d, fd2: %d \n", fd1, fd2);
 	if (dup2(fd1, fd2) == -1)
-		perror("dup2 58:");
-	if (close(fd1) == -1)
-		perror("close 60:");
-	printf("After: fd1: %d, fd2: %d \n", fd1, fd2);
+		print_perror_msg("dup2", "redirect fd");
+	if (fd1 != STDIN_FILENO && fd1 != STDOUT_FILENO)
+	{
+		if (close(fd1) == -1)
+			print_perror_msg("close", "redirect fd");
+	}
 }
 
 void	redirect_io_fds(int fd_in, int fd_out)

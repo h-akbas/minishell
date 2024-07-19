@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:20:58 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/18 14:56:39 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/18 15:15:35 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	exit_with_error(char *cmd, char *msg, int err)
 
 void	print_perror_msg(char *cmd, char *pmsg)
 {
-	ft_putstr_fd("minishell", STDERR_FILENO);
+	ft_putstr_fd("minishell: ", STDERR_FILENO);
 	ft_putstr_fd(cmd, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	perror(pmsg);
