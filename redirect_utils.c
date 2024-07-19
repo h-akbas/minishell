@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:33:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 06:16:38 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/19 06:53:31 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,4 @@ void	redirect_fd(int fd1, int fd2)
 		if (close(fd1) == -1)
 			print_perror_msg("close", "redirect fd");
 	}
-}
-
-void	redirect_io_fds(int fd_in, int fd_out)
-{
-	if (fd_in != STDIN_FILENO)
-		redirect_fd(fd_in, STDIN_FILENO);
-	if (fd_out != STDOUT_FILENO)
-		redirect_fd(fd_out, STDOUT_FILENO);
 }

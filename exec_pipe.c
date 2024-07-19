@@ -6,13 +6,12 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:07:45 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/18 16:12:00 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/19 06:45:13 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdbool.h>
-#include <stdio.h>
 #include <unistd.h>
 
 void	handle_pipe(int fd_out, char *cur_cmd, char **cmds)
