@@ -6,11 +6,12 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:55:02 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:25:56 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/20 13:36:52 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
+#include <stdio.h>
 #include <readline/readline.h>
 #include <signal.h>
 #include <unistd.h>

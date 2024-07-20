@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:32:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:27:34 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/20 13:34:26 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../minishell.h"
 #include <stdlib.h>
 #include <limits.h>
+#include <stdio.h>
 #include <readline/readline.h>
 #include <stdbool.h>
 #include <time.h>

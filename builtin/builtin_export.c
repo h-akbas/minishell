@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:51:26 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 18:32:34 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/20 13:48:17 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <unistd.h>
 
 static int	declare_env(t_env *ms_env);
-/* static t_env	*merge(t_env *a, t_env *b);
+static t_env	*merge(t_env *a, t_env *b);
 static void		split_list(t_env *src, t_env **front_ref, t_env **back_ref);
-static void		merge_sort(t_env **head_ref); */
+static void		merge_sort(t_env **head_ref);
 
 int	builtin_export(char **args, t_env **ms_env)
 {
@@ -53,7 +53,7 @@ static int	declare_env(t_env *ms_env)
 {
 	t_env	*tmp;
 
-/* 	merge_sort(&ms_env); */
+	merge_sort(&ms_env);
 	tmp = ms_env;
 	while (tmp)
 	{
@@ -72,7 +72,7 @@ static int	declare_env(t_env *ms_env)
 	return (EXIT_SUCCESS);
 }
 
-/* static t_env	*merge(t_env *a, t_env *b)
+static t_env	*merge(t_env *a, t_env *b)
 {
 	t_env	*result;
 
@@ -136,4 +136,3 @@ static void		merge_sort(t_env **head_ref)
 	merge_sort(&b);
 	*head_ref = merge(a, b);
 }
- */
