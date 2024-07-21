@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 13:41:55 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/20 13:34:00 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/21 21:36:22 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ static char	*create_prompt_str(t_env *ms_env)
 	if (!ft_strncmp(cwd, "/", 2))
 		dir = "root";
 	ft_bzero(prompt, ft_strlen(prompt));
-	ft_strlcat(prompt, "\e[0;32m", PATH_MAX);
+	ft_strlcat(prompt, "\e[1;34m", PATH_MAX);
 	ft_strlcat(prompt, user, PATH_MAX);
 	ft_strlcat(prompt, "\e[0m", PATH_MAX);
 	ft_strlcat(prompt, "@", PATH_MAX);
-	ft_strlcat(prompt, "\e[0;34m", PATH_MAX);
+	ft_strlcat(prompt, "\e[1;32m", PATH_MAX);
 	ft_strlcat(prompt, dir, PATH_MAX);
 	ft_strlcat(prompt, "\e[0m", PATH_MAX);
 	ft_strlcat(prompt, " ", PATH_MAX);
