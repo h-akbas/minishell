@@ -6,7 +6,7 @@
 #    By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 15:51:42 by hakbas            #+#    #+#              #
-#    Updated: 2024/07/21 17:56:47 by hakbas           ###   ########.fr        #
+#    Updated: 2024/07/21 20:51:08 by hakbas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,5 +60,5 @@ fclean: clean
 re: fclean all
 
 leak: all
-	valgrind --suppressions=./readline.supp --leak-check=full \
-	--show-leak-kinds=all --track-fds=yes --trace-children=yes ./$(NAME)
+	valgrind -s --suppressions=./readline.supp --leak-check=full \
+	--show-leak-kinds=all --track-fds=all --trace-children=yes ./$(NAME)

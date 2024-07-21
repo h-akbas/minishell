@@ -6,14 +6,13 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:36:30 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/20 16:44:09 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/21 21:11:34 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/stat.h>
 #include <sys/fcntl.h>
 #include <unistd.h>
-#include <errno.h>
 #include "../minishell.h"
 
 void	close_extra_fds(void)
@@ -24,7 +23,7 @@ void	close_extra_fds(void)
 
 	fd = STDERR_FILENO + 1;
 	max_fd = 1024;
-	while (fd <= max_fd)
+	while (fd < max_fd)
 	{
 		if (fstat(fd, &statbuf) == 0)
 		{

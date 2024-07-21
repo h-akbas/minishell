@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:00:29 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/21 17:53:12 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/21 21:13:53 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	declare_statement(t_env *env)
 		}
 		ft_putstr_fd("\n", STDOUT_FILENO);
 		free(name);
-		env = env->next; 	
+		env = env->next;
 	}
 }

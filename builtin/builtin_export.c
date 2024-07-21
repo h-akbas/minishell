@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:51:26 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/21 17:58:02 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/21 21:12:37 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static int	declare_env(t_env *ms_env);
+static int		declare_env(t_env *ms_env);
 static t_env	*merge(t_env *a, t_env *b);
 static void		split_list(t_env *src, t_env **front_ref, t_env **back_ref);
 static void		merge_sort(t_env **head_ref);
@@ -85,7 +85,7 @@ static t_env	*merge(t_env *a, t_env *b)
 	return (result);
 }
 
-static void		split_list(t_env *src, t_env **front_ref, t_env **back_ref)
+static void	split_list(t_env *src, t_env **front_ref, t_env **back_ref)
 {
 	t_env	*fast;
 	t_env	*slow;
@@ -113,7 +113,7 @@ static void		split_list(t_env *src, t_env **front_ref, t_env **back_ref)
 	return ;
 }
 
-static void		merge_sort(t_env **head_ref)
+static void	merge_sort(t_env **head_ref)
 {
 	t_env	*head;
 	t_env	*a;
