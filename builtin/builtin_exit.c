@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:32:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/20 13:34:26 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/21 18:10:43 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static bool	fits_in_long_long(char *str)
 
 	if (ft_strlen(str) > 20)
 		return (false);
-	if (ft_strncmp(str, "-9223372036854775808", 21))
+	if (!ft_strncmp(str, "-9223372036854775808", 21))
 		return (true);
 	res = 0;
 	if (*str == '-' || *str == '+')
