@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/21 21:14:53 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/21 21:23:25 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	if (argc > 1)
 	{
-		ft_putendl_fd("Invalid number of arguments.", STDOUT_FILENO);
+		ft_putendl_fd("Invalid number of arguments.", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	ms_env = init_env(envp);
 	if (!ms_env)
 	{
-		ft_putendl_fd("Failed to create environment variables!", STDOUT_FILENO);
+		ft_putendl_fd("Failed to create environment variables!", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	increment_shlvl(ms_env);
