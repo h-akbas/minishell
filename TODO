@@ -1,7 +1,7 @@
 
 cd -: Bu komut bozuk. Bad address hatası veriyor düzeltilmeli. cd leak yok.
 
-export: bizden kaynaklı leak var düzeltilmeli. Export komutundan sonra ./minishell kapanıyor.
+export: bizden kaynaklı leak var düzeltilmeli. 
 
 ls: sistemsel leak var.
 

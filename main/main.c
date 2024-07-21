@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:26:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:56:14 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../libft/libft.h"
 #include "../minishell.h"
 
-static int	init_minishell(t_env *ms_env);
+static int	init_minishell(t_env *ms_env /* char **envp */);
 static void	increment_shlvl(t_env *ms_env);
 
 int	main(int argc, char **argv, char **envp)
@@ -38,7 +38,7 @@ int	main(int argc, char **argv, char **envp)
 	return (init_minishell(ms_env));
 }
 
-static int	init_minishell(t_env *ms_env)
+static int	init_minishell(t_env *ms_env /*char **envp*/)
 {
 	int		exit_stat;
 	char	*input;
@@ -47,6 +47,8 @@ static int	init_minishell(t_env *ms_env)
 	exit_stat = EXIT_SUCCESS;
 	while (1)
 	{
+/* 		if (!ms_env || !ms_env->key_pair)
+			ms_env = init_env(envp); */
 		set_main_signals();
 		input = parse_prompt(ms_env);
 		if (input_error(input, &exit_stat, ms_env))

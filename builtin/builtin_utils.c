@@ -6,11 +6,12 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:00:29 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:26:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:53:12 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+#include "../libft/libft.h"
 #include <stdbool.h>
 #include <unistd.h>
 
@@ -41,4 +42,28 @@ void	update_wd(t_env *ms_env)
 		update_env_var("OLDPWD", pwd, ms_env);
 	if (pwd && *pwd)
 		update_env_var("PWD", getcwd(cwd, PATH_MAX), ms_env);
+}
+
+void	declare_statement(t_env *env)
+{
+	char	*name;
+	char	*value;
+
+	while (env)
+	{
+		name = get_name_only(env->key_pair);
+		value = get_value_only(env->key_pair);
+		ft_putstr_fd("declare -x ", STDOUT_FILENO);
+		ft_putstr_fd(name, STDOUT_FILENO);
+		if (ft_strchr(env->key_pair, '='))
+		{
+			ft_putstr_fd("=", STDOUT_FILENO);
+			ft_putstr_fd("\"", STDOUT_FILENO);
+			ft_putstr_fd(value, STDOUT_FILENO);
+			ft_putstr_fd("\"", STDOUT_FILENO);
+		}
+		ft_putstr_fd("\n", STDOUT_FILENO);
+		free(name);
+		env = env->next; 	
+	}
 }

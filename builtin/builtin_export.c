@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:51:26 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/20 13:48:17 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/21 17:58:02 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,20 @@ int	builtin_export(char **args, t_env **ms_env)
 		free(varname);
 		args++;
 	}
-	exit(exit_stat);
+	return (exit_stat);
 }
 
 static int	declare_env(t_env *ms_env)
 {
 	t_env	*tmp;
+	char	**envp;
 
-	merge_sort(&ms_env);
-	tmp = ms_env;
-	while (tmp)
-	{
-		ft_putstr_fd("declare -x ", STDOUT_FILENO);
-		ft_putstr_fd(get_name_only(tmp->key_pair), STDOUT_FILENO);
-		if (ft_strchr(tmp->key_pair, '='))
-		{
-			ft_putstr_fd("=", STDOUT_FILENO);
-			ft_putstr_fd("\"", STDOUT_FILENO);
-			ft_putstr_fd(get_value_only(tmp->key_pair), STDOUT_FILENO);
-			ft_putstr_fd("\"", STDOUT_FILENO);
-		}
-		ft_putstr_fd("\n", STDOUT_FILENO);
-		tmp = tmp->next;
-	}
+	envp = ms_env_to_envp(ms_env);
+	tmp = init_env(envp);
+	merge_sort(&tmp);
+	declare_statement(tmp);
+	free_env(&tmp);
+	free_array(envp);
 	return (EXIT_SUCCESS);
 }
 
