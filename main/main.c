@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/30 14:24:47 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/30 20:54:09 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ int	main(int argc, char **argv, char **envp)
 		ft_putendl_fd("Usage: ./minishell", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
-/* 	if (argc > 1)
-	{
-		ft_putendl_fd("Invalid number of arguments.", STDERR_FILENO);
-		return (EXIT_FAILURE);
-	} */
 	ms_env = init_env(envp);
 	if (!ms_env)
 	{
