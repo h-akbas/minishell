@@ -1,5 +1,0 @@
-
-cd -: Bu komut bozuk. Bad address hatası veriyor düzeltilmeli. cd leak yok.
-		Ayrıca geri giderken pwd'yi yazdırmalı.
-
-expansion'lardan problem var $$ pid yazdırmıyor.

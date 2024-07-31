@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/31 16:54:22 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/31 22:02:17 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_env
 }				t_env;
 //function prototypes
 
+int			init_minishell(t_env *ms_env);
+void		increment_shlvl(t_env *ms_env);
 t_env		*get_env_node(char *name, t_env *ms_env);
 char		*get_env_value(char *name, t_env *ms_env);
 char		*get_name_only(char *key_pair);
