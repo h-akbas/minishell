@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 15:01:06 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/12 22:59:40 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/31 16:54:11 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ bool	is_empty(char *str)
 		str++;
 	}
 	return (true);
-}
-
-bool	is_quote(char c)
-{
-	return (c == '\'' || c == '\"');
 }
 
 bool	has_pipe(char *str)

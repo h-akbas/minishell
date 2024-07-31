@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/21 17:53:43 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/31 16:54:22 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ long long	ft_atoll(const char *str);
 
 bool		invalid_syntax(char *str);
 bool		is_empty(char *str);
-bool		is_quote(char c);
 bool		has_pipe(char *str);
 bool		is_name_delim(char c);
 

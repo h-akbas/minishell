@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:23:39 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:26:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/31 16:57:44 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static bool	has_quotes(char *cmd)
 		return (false);
 	while (*cmd && cmd)
 	{
-		if (is_quote(*cmd))
+		if (*cmd == '\'' || *cmd == '"')
 			return (true);
 		cmd++;
 	}
