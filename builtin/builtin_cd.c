@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:27:27 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/20 17:25:19 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:56:52 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	cd(char **args, t_env *ms_env)
 		print_perror_msg("cd", args[1]);
 		return (EXIT_FAILURE);
 	}
+	if (str_equal(path, get_env_value("OLDPWD", ms_env)))
+		ft_putendl_fd(path, 1);
 	if (is_dir_flag || home_subdir)
 		free(path);
 	update_wd(ms_env);

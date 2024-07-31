@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/31 13:45:59 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:59:34 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	main(int argc, char **argv, char **envp)
 	ms_env = init_env(envp);
 	if (!ms_env)
 	{
-		ft_putendl_fd("Error: Failed to create environment variables!", STDERR_FILENO);
+		ft_putendl_fd("Error: Failed to create environment variables!", \
+			STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	increment_shlvl(ms_env);
