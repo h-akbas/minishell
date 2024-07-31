@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/30 20:54:09 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/07/31 13:45:59 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,16 @@ int	main(int argc, char **argv, char **envp)
 	t_env	*ms_env;
 
 	(void)argv;
-	if (!isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO) || argc > 1)
+	if (argc > 1 || !isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO))
 	{
+		close_all_fds();
 		ft_putendl_fd("Usage: ./minishell", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	ms_env = init_env(envp);
 	if (!ms_env)
 	{
-		ft_putendl_fd("Failed to create environment variables!", STDERR_FILENO);
+		ft_putendl_fd("Error: Failed to create environment variables!", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	increment_shlvl(ms_env);
