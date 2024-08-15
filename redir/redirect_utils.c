@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:33:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:26:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/15 14:46:52 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,29 @@ char	*get_redir_pos(char *str, char redir_c)
 
 char	get_next_redir(char *str)
 {
-	char	q;
-
-	q = '\0';
 	while (*str)
 	{
-		if (q == '\0')
+		if (*str == '\'')
 		{
-			if (*str == '\'' || *str == '"')
-				q = *str;
-			else if (*str == '<' || *str == '>' || *str < 0)
-				return (*str);
+			str++;
+			while (*str && *str != '\'')
+				str++;
+			if (!*str)
+				return (0);
 		}
-		else if (*str == q)
-			q = '\0';
+		if (*str == '"')
+		{
+			str++;
+			while (*str && *str != '"')
+				str++;
+			if (!*str)
+				return (0);
+		}
+		if (*str == '<' || *str == '>')
+			return (*str);
 		str++;
 	}
-	return ('\0');
+	return (0);
 }
 
 void	redirect_fd(int fd1, int fd2)
