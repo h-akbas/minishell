@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:27:27 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/31 13:56:52 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/17 15:14:20 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ int	cd(char **args, t_env *ms_env)
 	home_subdir = args[1] && !ft_strncmp(args[1], "~/", 2);
 	path = get_cd_path(args, ms_env, home_subdir, is_dir_flag);
 	if (args[1] && args[2] && !is_dir_flag)
-	{
-		free(path);
 		return (print_error_msg("cd", "too many arguments"));
-	}
 	if (chdir(path) != 0)
 	{
 		if (is_dir_flag || home_subdir)
@@ -44,7 +41,7 @@ int	cd(char **args, t_env *ms_env)
 		print_perror_msg("cd", args[1]);
 		return (EXIT_FAILURE);
 	}
-	if (str_equal(path, get_env_value("OLDPWD", ms_env)))
+	if (str_equal(args[1], "-"))
 		ft_putendl_fd(path, 1);
 	if (is_dir_flag || home_subdir)
 		free(path);
@@ -77,8 +74,8 @@ char	*get_cd_path(char **args, t_env *ms_env, bool home_subdir, \
 	if (!args[1] || str_equal(args[1], "~"))
 	{
 		path = get_env_value("HOME", ms_env);
-		if (!path)
-			path = get_env_value("__HOME", ms_env);
+/* 		if (!path)
+			path = get_env_value("__HOME", ms_env); */
 	}
 	else if (args[1] && str_equal(args[1], "-"))
 		path = get_env_value("OLDPWD", ms_env);

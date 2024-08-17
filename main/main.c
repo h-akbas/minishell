@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/15 15:16:24 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/17 14:36:56 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ int	main(int argc, char **argv, char **envp)
 		return (EXIT_FAILURE);
 	}
 	ms_env = init_env(envp);
-/* 	if (!ms_env)
-	{
-		ft_putendl_fd("Error: Failed to create environment variables!", \
-			STDERR_FILENO);
-		return (EXIT_FAILURE);
-	} */
 	increment_shlvl(ms_env);
 	return (init_minishell(ms_env));
 }

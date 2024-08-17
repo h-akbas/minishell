@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:32:14 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:26:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/17 15:10:29 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 t_env	*init_env(char	**envp)
 {
 	t_env	*list;
-	char	*home;
+//	char	*home;
 	int		i;
 
 	list = NULL;
@@ -29,11 +29,11 @@ t_env	*init_env(char	**envp)
 	}
 	if (!get_env_node("OLDPWD", list))
 		append_list("OLDPWD", &list);
-	home = ft_strjoin("__HOME=", get_env_value("HOME", list));
+/* 	home = ft_strjoin("__HOME=", get_env_value("HOME", list));
 	if (!home)
 		return (NULL);
 	append_list(home, &list);
-	free(home);
+	free(home); */
 	return (list);
 }
 
