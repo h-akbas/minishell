@@ -6,16 +6,19 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 20:10:13 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:26:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/22 16:23:31 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../minishell.h"
+#include <stdbool.h>
 #include <stdlib.h>
 
 static void	remove_from_env(char *varname, t_env **ms_env);
-static void	ms_env_del_next_node(t_env **node);
+static bool	should_remove_node(char *key_pair, char *varname, size_t len);
+static void	remove_first_node(t_env **ms_env);
+static void	remove_next_node(t_env *current);
 
 int	unset(char **args, t_env **ms_env)
 {
@@ -43,28 +46,46 @@ int	unset(char **args, t_env **ms_env)
 
 static void	remove_from_env(char *varname, t_env **ms_env)
 {
-	t_env	*tmp;
+	t_env	*current;
 	size_t	len;
 
-	tmp = *ms_env;
 	len = ft_strlen(varname);
-	while (tmp && tmp->next)
+	if (should_remove_node((*ms_env)->key_pair, varname, len))
+		remove_first_node(ms_env);
+	current = *ms_env;
+	while (current && current->next)
 	{
-		if (ft_strncmp((tmp->next)->key_pair, varname, len) == 0)
+		if (should_remove_node(current->next->key_pair, varname, len))
 		{
-			if ((tmp->next)->key_pair[len] == '=')
-				return (ms_env_del_next_node(&tmp));
+			remove_next_node(current);
+			return ;
 		}
-		tmp = tmp->next;
+		current = current->next;
 	}
 }
 
-static void	ms_env_del_next_node(t_env **node)
+static bool	should_remove_node(char *key_pair, char *varname, size_t len)
+{
+	return (ft_strncmp(key_pair, varname, len) == 0
+		&& key_pair[len] == '=');
+}
+
+static void	remove_first_node(t_env **ms_env)
 {
 	t_env	*tmp;
 
-	tmp = (*node)->next;
-	(*node)->next = (*node)->next->next;
+	tmp = *ms_env;
+	*ms_env = tmp->next;
+	free(tmp->key_pair);
+	free(tmp);
+}
+
+static void	remove_next_node(t_env *current)
+{
+	t_env	*tmp;
+
+	tmp = current->next;
+	current->next = tmp->next;
 	free(tmp->key_pair);
 	free(tmp);
 }

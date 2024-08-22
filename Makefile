@@ -6,7 +6,7 @@
 #    By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 15:51:42 by hakbas            #+#    #+#              #
-#    Updated: 2024/08/22 14:07:14 by hakbas           ###   ########.fr        #
+#    Updated: 2024/08/22 15:04:04 by hakbas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,3 +62,6 @@ re: fclean all
 leak: all
 	valgrind -s --suppressions=./readline.supp --leak-check=full \
 	--show-leak-kinds=all --track-fds=all --trace-children=yes ./$(NAME)
+
+sanitize: CFLAGS += -fsanitize=address
+sanitize: re

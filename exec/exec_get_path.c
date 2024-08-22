@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:49:21 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/22 14:01:39 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/22 15:10:15 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static void	create_path(char *dst, const char *part1, const char *part2, \
 						const char *part3)
 {
 	*dst = '\0';
+	if (!part1 || !part2 || !part3)
+		return ;
 	ft_strlcat(dst, part1, PATH_MAX);
 	ft_strlcat(dst, part2, PATH_MAX);
 	ft_strlcat(dst, part3, PATH_MAX);

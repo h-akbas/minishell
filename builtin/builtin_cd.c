@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:27:27 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/22 13:34:23 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/22 16:21:11 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	*get_home_subdir_path(char **args, t_env *ms_env);
 
 int	cd(char **args, t_env *ms_env)
 {
-	t_cd_params params;
+	t_cd_params	params;
 
 	params.is_dir_flag = is_directory(args);
 	params.home_subdir = args[1] && !ft_strncmp(args[1], "~/", 2);

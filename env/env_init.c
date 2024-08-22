@@ -6,34 +6,34 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:32:14 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/17 15:10:29 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/22 16:20:41 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../minishell.h"
 #include <stdlib.h>
+#include <unistd.h>
+
+static t_env	*create_dummy_env(void);
 
 t_env	*init_env(char	**envp)
 {
 	t_env	*list;
-//	char	*home;
 	int		i;
 
 	list = NULL;
-	i = 0;
-	while (envp[i])
+	if (envp == NULL || *envp == NULL)
+		list = create_dummy_env();
+	else
 	{
-		append_list(envp[i], &list);
-		i++;
+		i = 0;
+		while (envp[i])
+		{
+			append_list(envp[i], &list);
+			i++;
+		}
 	}
-	if (!get_env_node("OLDPWD", list))
-		append_list("OLDPWD", &list);
-/* 	home = ft_strjoin("__HOME=", get_env_value("HOME", list));
-	if (!home)
-		return (NULL);
-	append_list(home, &list);
-	free(home); */
 	return (list);
 }
 
@@ -61,4 +61,23 @@ void	append_list(char *key_pair, t_env **lst)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new_env;
+}
+
+static t_env	*create_dummy_env(void)
+{
+	t_env	*dummy_env;
+	char	*cwd;
+
+	dummy_env = NULL;
+	append_list(create_keypair("PATH", "/usr/bin:/bin:/usr/local/bin"),
+		&dummy_env);
+	cwd = getcwd(NULL, 0);
+	if (cwd)
+	{
+		append_list(create_keypair("PWD", cwd), &dummy_env);
+		free (cwd);
+	}
+	append_list(create_keypair("SHLVL", "1"), &dummy_env);
+	append_list(create_keypair("_", "/usr/bin/env"), &dummy_env);
+	return (dummy_env);
 }
