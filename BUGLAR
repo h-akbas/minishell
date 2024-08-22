@@ -1,2 +1,6 @@
 cd birden fazla komut ile çalıştırınca hata alıyor - DÜZELDİ
 
+PATH kaldırıldıktan sonra external konut kullanılınca segfault oluşuyor. (valgrind veya fsanitize ile tespit ediliyor.) 
+
+
+env -i çalıştırınca dummy environment yaratılması gerekiyor. 

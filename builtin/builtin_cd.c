@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:27:27 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/17 15:14:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/22 13:34:23 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,78 +17,74 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
-static bool	is_dir(char **args);
-static char	*get_cd_path(char **args, t_env *ms_env, bool home_subdir, \
-				bool is_dir_flag);
-static char	*parse_dir_name(char **args);
-static char	*parse_home_subdir(char **args, t_env *ms_env);
+static bool	is_directory(char **args);
+static char	*get_cd_path(char **args, t_env *ms_env, t_cd_params *params);
+static char	*construct_path(char **args);
+static char	*get_home_subdir_path(char **args, t_env *ms_env);
 
 int	cd(char **args, t_env *ms_env)
 {
-	char	*path;
-	bool	home_subdir;
-	bool	is_dir_flag;
+	t_cd_params params;
 
-	is_dir_flag = is_dir(args);
-	home_subdir = args[1] && !ft_strncmp(args[1], "~/", 2);
-	path = get_cd_path(args, ms_env, home_subdir, is_dir_flag);
-	if (args[1] && args[2] && !is_dir_flag)
+	params.is_dir_flag = is_directory(args);
+	params.home_subdir = args[1] && !ft_strncmp(args[1], "~/", 2);
+	params.path = get_cd_path(args, ms_env, &params);
+	if (args[1] && args[2] && !params.is_dir_flag)
 		return (print_error_msg("cd", "too many arguments"));
-	if (chdir(path) != 0)
+	if (params.path == NULL)
 	{
-		if (is_dir_flag || home_subdir)
-			free(path);
+		print_error_msg("cd", "Bad address");
+		return (EXIT_FAILURE);
+	}
+	if (chdir(params.path) != 0)
+	{
+		if (params.is_dir_flag || params.home_subdir)
+			free(params.path);
 		print_perror_msg("cd", args[1]);
 		return (EXIT_FAILURE);
 	}
 	if (str_equal(args[1], "-"))
-		ft_putendl_fd(path, 1);
-	if (is_dir_flag || home_subdir)
-		free(path);
+		ft_putendl_fd(params.path, 1);
+	if (params.is_dir_flag || params.home_subdir)
+		free(params.path);
 	update_wd(ms_env);
 	return (EXIT_SUCCESS);
 }
 
-static bool	is_dir(char **args)
+static bool	is_directory(char **args)
 {
 	char		*dirname;
 	struct stat	statbuf;
+	bool		is_dir_flag;
 
-	dirname = parse_dir_name(args);
-	if (!dirname)
+	is_dir_flag = false;
+	dirname = construct_path(args);
+	if (dirname == NULL)
 		return (false);
-	if (stat(dirname, &statbuf) != 0)
-	{
-		free(dirname);
-		return (false);
-	}
+	if (stat(dirname, &statbuf) == 0)
+		is_dir_flag = S_ISDIR(statbuf.st_mode);
 	free(dirname);
-	return (S_ISDIR(statbuf.st_mode));
+	return (is_dir_flag);
 }
 
-char	*get_cd_path(char **args, t_env *ms_env, bool home_subdir, \
-			bool is_dir_flag)
+char	*get_cd_path(char **args, t_env *ms_env, t_cd_params *params)
 {
 	char	*path;
 
 	if (!args[1] || str_equal(args[1], "~"))
-	{
 		path = get_env_value("HOME", ms_env);
-/* 		if (!path)
-			path = get_env_value("__HOME", ms_env); */
-	}
 	else if (args[1] && str_equal(args[1], "-"))
 		path = get_env_value("OLDPWD", ms_env);
-	else if (home_subdir)
-		path = parse_home_subdir(args, ms_env);
-	else if (is_dir_flag)
-		path = parse_dir_name(args);
+	else if (params->home_subdir)
+		path = get_home_subdir_path(args, ms_env);
+	else if (params->is_dir_flag)
+		path = construct_path(args);
 	else
 		path = args[1];
 	return (path);
 }
 
-static char	*parse_dir_name(char **args)
+static char	*construct_path(char **args)
 {
 	char	*path;
 	int		i;
@@ -107,19 +103,15 @@ static char	*parse_dir_name(char **args)
 	return (path);
 }
 
-static char	*parse_home_subdir(char **args, t_env *ms_env)
+static char	*get_home_subdir_path(char **args, t_env *ms_env)
 {
 	char	*home;
 	char	*path;
 
 	home = get_env_value("HOME", ms_env);
 	if (!home)
-	{
-		home = get_env_value("__HOME", ms_env);
-		if (!home)
-			return (NULL);
-	}
-	path = ft_calloc(PATH_MAX, PATH_MAX);
+		return (NULL);
+	path = ft_calloc(PATH_MAX, sizeof(char));
 	if (!path)
 		return (NULL);
 	ft_strlcpy(path, home, PATH_MAX);
