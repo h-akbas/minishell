@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/31 22:02:17 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/22 13:01:22 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,24 @@
 # define NO_REDIR -1
 # define INTERRUPT 128
 # define CMD_NOT_FOUND 127
-# define PERMISSION_DENIED 126
 # define NOT_EXECUTABLE 126
-# define OUT_OF_RANGE 255
 # define BUILTIN_MISUSE 2
-# define FORK_ERROR -1
 # define CMD_NOT_FOUND_MSG	"command not found"
 # define NOT_EXECUTABLE_MSG "Is a directory"
+
 //typedefs
 typedef struct s_env
 {
 	char			*key_pair;
 	struct s_env	*next;
 }				t_env;
+
+typedef struct s_cd_params
+{
+	char	*path;
+	bool	home_subdir;
+	bool	is_dir_flag;
+}				t_cd_params;
 //function prototypes
 
 int			init_minishell(t_env *ms_env);
