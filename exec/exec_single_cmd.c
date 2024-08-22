@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 14:55:00 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:26:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/23 00:43:08 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	exec_forked_extern(char **args, t_env *ms_env);
 int	single_cmd(char	*cmd, t_env **ms_env)
 {
 	char	**args;
-	int		stat;
+	int		status;
 	int		org_fds[2];
 
 	if (!handle_redirs(cmd, &org_fds[0]))
@@ -32,19 +32,16 @@ int	single_cmd(char	*cmd, t_env **ms_env)
 		return (EXIT_FAILURE);
 	}
 	args = split_args(cmd);
+	free (cmd);
 	if (!args)
-	{
-		free(cmd);
 		return (EXIT_FAILURE);
-	}
-	free(cmd);
 	if (is_builtin(args[0]))
-		stat = exec_builtin(args, ms_env);
+		status = exec_builtin(args, ms_env);
 	else
-		stat = exec_forked_extern(args, *ms_env);
+		status = exec_forked_extern(args, *ms_env);
 	free_array(args);
 	restore_org_fds(org_fds);
-	return (stat);
+	return (status);
 }
 
 static int	handle_redirs(char *cmd, int org_fds[2])
