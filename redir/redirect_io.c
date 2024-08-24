@@ -6,13 +6,15 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:56:25 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/23 18:46:51 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/24 14:24:00 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+#include <errno.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 int	redirect_output(char *cmd)
@@ -31,7 +33,7 @@ int	redirect_output(char *cmd)
 	fd = open(file_name, o_flags, 0644);
 	if (fd == -1)
 	{
-		print_perror_msg("open", file_name);
+		print_error_msg(file_name, strerror(errno));
 		free(file_name);
 		return (0);
 	}
@@ -52,7 +54,7 @@ int	redirect_input(char *cmd)
 	fd = open(file_name, O_RDONLY, FD_CLOEXEC);
 	if (fd == -1)
 	{
-		print_perror_msg("open", file_name);
+		print_error_msg(file_name, strerror(errno));
 		free(file_name);
 		return (0);
 	}
