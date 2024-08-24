@@ -6,16 +6,18 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:58:53 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/20 14:18:48 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/24 14:19:07 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../minishell.h"
+#include <errno.h>
 #include <stdio.h>
 #include <readline/readline.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/stat.h>
 
@@ -71,7 +73,7 @@ static void	handle_execve_err(char **args, char *path, char **envp)
 	int	err;
 
 	err = EXIT_FAILURE;
-	print_perror_msg("execve", args[0]);
+	print_error_msg(args[0], strerror(errno));
 	if (access(path, F_OK))
 		err = CMD_NOT_FOUND;
 	else if (access(path, X_OK))
