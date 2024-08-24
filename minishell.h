@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/22 14:51:18 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/24 15:37:57 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void		expand_exit_stat(char **input, int exit_stat);
 bool		valid_varname(char *str);
 bool		is_varname(char c);
 long long	ft_atoll(const char *str);
+bool		ft_isspace(char c);
 
 bool		invalid_syntax(char *str);
 bool		is_empty(char *str);
@@ -97,7 +98,7 @@ void		print_varname_error(char *cmd, char *varname);
 
 char		*get_redir_pos(char *str, char redir_c);
 char		get_next_redir(char *str);
-void		redirect_fd(int fd1, int fd2);
+int			redirect_fd(int fd1, int fd2);
 int			redirect_input(char *cmd);
 int			redirect_output(char *cmd);
 void		redirect_heredoc(char *cmd, int hd_no);

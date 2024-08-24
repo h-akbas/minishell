@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:15:37 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/17 14:50:17 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/24 15:45:40 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,8 @@ bool	str_equal(const char *str1, const char *str2)
 void	move_one_forward(char *str)
 {
 	ft_memmove(str, str + 1, ft_strlen(str + 1) + 1);
+}
+bool	ft_isspace(char c)
+{
+	return ((c >= 9 && c <= 13) && c == 32);
 }
