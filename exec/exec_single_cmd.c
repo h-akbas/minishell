@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 14:55:00 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/23 00:43:08 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/23 18:45:49 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	single_cmd(char	*cmd, t_env **ms_env)
 
 	if (!handle_redirs(cmd, &org_fds[0]))
 	{
-		restore_org_fds(org_fds);
 		free(cmd);
 		return (EXIT_FAILURE);
 	}
