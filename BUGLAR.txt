@@ -6,8 +6,10 @@ PATH kaldırıldıktan sonra external konut kullanılınca segfault oluşuyor. (
 env -i çalıştırınca dummy environment yaratılması gerekiyor. ÇÖZÜLDÜ
 
 cat < input.txt
-olmayan ya da izni olmayan dosya olunca redirect fd hata veriyor.
+olmayan ya da izni olmayan dosya olunca redirect fd hata veriyor. GİDERİLDİ.
 
-redirect algoritmasının komple gözden geçirilmesi gerekli
+redirect algoritması refactor edilecek.
 
+heredoc refactor edilecek.
 
+proje geneli readability iyileştirmeleri gerekiyor. Evo sırasında yardımcı olacaktır.
