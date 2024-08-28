@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:32:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/21 18:10:43 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/28 20:37:53 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static void	check_args_error(char **args)
 	}
 	if (args[2] != NULL)
 	{
+		// tekrar bakılacak
 		free_array(args);
 		exit_with_error("exit", "too many arguments", EXIT_FAILURE);
 	}

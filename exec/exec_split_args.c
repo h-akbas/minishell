@@ -6,13 +6,14 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:23:39 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/31 16:57:44 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/25 18:45:27 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../minishell.h"
 #include <stdbool.h>
+
 
 static bool	has_quotes(char *cmd);
 static void	replace_spaces(char *cmd, char delim);
