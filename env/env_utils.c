@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 17:07:14 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/19 17:26:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 01:48:15 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_env	*get_env_node(char *name, t_env *ms_env)
 	{
 		if (!ft_strncmp(name, tmp->key_pair, size))
 		{
-			if (tmp->key_pair[size] == '=')
+			if (tmp->key_pair[size] == '=' || tmp->key_pair[size] == '\0')
 				return (tmp);
 		}
 		tmp = tmp->next;
