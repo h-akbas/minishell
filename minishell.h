@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 00:13:41 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 01:29:25 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define INTERRUPT 128
 # define CMD_NOT_FOUND 127
 # define NOT_EXECUTABLE 126
-# define BUILTIN_MISUSE 2
 # define CMD_NOT_FOUND_MSG	"command not found"
 # define NOT_EXECUTABLE_MSG "Is a directory"
 # define DEFAULT_PATH "/usr/bin:/bin:/usr/local/bin"
