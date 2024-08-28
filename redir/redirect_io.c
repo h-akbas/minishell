@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:56:25 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/28 19:30:12 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 00:06:30 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	redirect_output(char *cmd)
 	if (redir_out && redir_out[1] == '>')
 		o_flags = O_WRONLY | O_CREAT | O_APPEND;
 	else
-	 	o_flags = O_WRONLY | O_CREAT | O_TRUNC;
+		o_flags = O_WRONLY | O_CREAT | O_TRUNC;
 	fd = open_redirection_file(redir_out, o_flags);
 	if (fd == -1)
 		return (0);
@@ -53,7 +53,6 @@ int	redirect_input(char *cmd)
 	if (fd == -1)
 		return (0);
 	return (redirect_fd(fd, STDIN_FILENO));
-
 }
 
 static int	open_redirection_file(char *redir, int o_flags)

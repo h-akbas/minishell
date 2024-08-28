@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/24 15:37:57 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 00:13:41 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,9 @@ int			builtin_exit(char **args, t_env **ms_env);
 int			builtin_export(char **args, t_env **ms_env);
 int			pwd(void);
 int			unset(char **args, t_env **ms_env);
+char		**ft_split_preserve_quotes(char *cmd, char delimiter);
+void		toggle_quotes(char c, bool *in_quotes, char *quote_char);
+void		ft_strclr(char *s);
+void		remove_quotes(char *cmd);
 
 #endif

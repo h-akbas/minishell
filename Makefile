@@ -6,7 +6,7 @@
 #    By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 15:51:42 by hakbas            #+#    #+#              #
-#    Updated: 2024/08/22 15:04:04 by hakbas           ###   ########.fr        #
+#    Updated: 2024/08/29 00:02:27 by hakbas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRCS			= builtin_cd.c builtin_echo.c builtin_env.c builtin_exit.c \
 				syntax_check.c syntax_check_utils.c utils_arr_len.c \
 				utils_error.c utils_fd.c utils_free_array.c utils_ft_atoll.c \
 				utils_label.c utils_quoting.c utils_signals.c \
-				utils_str_check.c utils_str_utils.c init_minishell.c shlvl.c
+				utils_str_check.c utils_str_utils.c init_minishell.c shlvl.c \
+				exec_split_args_utils.c exec_split_args_utils2.c
 
 LIBFT_DIR		= ./libft
 LIBFT			= $(LIBFT_DIR)/libft.a

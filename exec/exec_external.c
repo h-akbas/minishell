@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:58:53 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/28 20:39:05 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 00:13:00 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	exec_external(char **args, t_env *ms_env)
 	free_env(&ms_env);
 	if (execve(path, args, envp) == -1)
 		handle_execve_err(args, path, envp);
-	exit(EXIT_SUCCESS); //tekrar bakılacak
+	exit(EXIT_SUCCESS);
 }
 
 static bool	is_folder(char *cmd)

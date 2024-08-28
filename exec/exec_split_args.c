@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:23:39 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/25 18:45:27 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 00:11:41 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 #include "../minishell.h"
 #include <stdbool.h>
 
-
 static bool	has_quotes(char *cmd);
 static void	replace_spaces(char *cmd, char delim);
-static void	remove_quotes(char *cmd);
 static void	restore_spaces(char **args);
+static void	remove_quotes_preserved(char **args);
 
 char	**split_args(char *cmd)
 {
@@ -28,10 +27,10 @@ char	**split_args(char *cmd)
 		return (ft_split(cmd, ' '));
 	replace_spaces(cmd, '"');
 	replace_spaces(cmd, '\'');
-	remove_quotes(cmd);
-	exec_args = ft_split(cmd, ' ');
+	exec_args = ft_split_preserve_quotes(cmd, ' ');
 	if (!exec_args)
 		return (NULL);
+	remove_quotes_preserved(exec_args);
 	restore_spaces(exec_args);
 	return (exec_args);
 }
@@ -67,25 +66,20 @@ static void	replace_spaces(char *cmd, char delim)
 		replace_spaces(cmd, delim);
 }
 
-static void	remove_quotes(char *cmd)
+static void	remove_quotes_preserved(char **args)
 {
-	char	last_open_q;
-
-	last_open_q = 0;
-	while (*cmd)
+	while (*args)
 	{
-		if ((*cmd == '\'' || *cmd == '"') && !last_open_q)
+		if (ft_strncmp(*args, "\"\"", 4) == 0
+			|| ft_strncmp(*args, "''", 2) == 0)
 		{
-			last_open_q = *cmd;
-			ft_memmove(cmd, cmd + 1, ft_strlen(cmd + 1) + 1);
-		}
-		else if (*cmd == last_open_q)
-		{
-			last_open_q = 0;
-			ft_memmove(cmd, cmd + 1, ft_strlen(cmd + 1) + 1);
+			ft_strclr(*args);
 		}
 		else
-			cmd++;
+		{
+			remove_quotes(*args);
+		}
+		args++;
 	}
 }
 
