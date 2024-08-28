@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 01:29:25 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 02:10:33 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ bool		valid_varname(char *str);
 bool		is_varname(char c);
 long long	ft_atoll(const char *str);
 bool		ft_isspace(char c);
+bool		pipe_at_end(char *str);
 
 bool		invalid_syntax(char *str);
 bool		is_empty(char *str);

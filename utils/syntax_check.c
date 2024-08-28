@@ -6,11 +6,12 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 21:10:53 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/17 13:56:31 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 02:15:25 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+#include "../libft/libft.h"
 #include <stdbool.h>
 
 static bool	redir_with_no_label(char *str);
@@ -25,6 +26,8 @@ bool	invalid_syntax(char *str)
 	if (redir_with_no_label(str))
 		return (true);
 	if (empty_pipe(str))
+		return (true);
+	if (pipe_at_end(str))
 		return (true);
 	return (false);
 }
@@ -65,4 +68,14 @@ static bool	empty_pipe(char *str)
 	if (*next_pipe == '|')
 		return (put_syntax_error("|"));
 	return (empty_pipe(next_pipe));
+}
+
+bool	pipe_at_end(char *str)
+{
+	char	*last_non_space;
+
+	last_non_space = str + ft_strlen(str) - 1;
+	while (last_non_space > str && ft_isspace(*last_non_space))
+		last_non_space--;
+	return (*last_non_space == '|');
 }
