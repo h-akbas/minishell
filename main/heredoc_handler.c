@@ -6,11 +6,10 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:07:51 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 15:14:47 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 17:31:02 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../minishell.h"
 #include <stdio.h>
 #include <readline/readline.h>
@@ -19,16 +18,16 @@
 #include <unistd.h>
 
 static char	*get_heredoc_pos(char *str);
-static char	*temp_filename(int hd_no);
 static void	read_heredoc(int *exit_stat, t_env *ms_env, char *delim, int hd_no);
 static int	exec_heredoc(char *delim, int hd_no, int *exit_stat, t_env *ms_env);
 
 int	handle_heredoc(char *input, int *exit_stat, t_env *ms_env)
 {
-	static int	heredoc_number = 0;
+	static int	heredoc_number;
 	char		*heredoc_pos;
 	char		*delim;
 
+	heredoc_number = -1;
 	heredoc_pos = get_heredoc_pos(input);
 	if (!heredoc_pos)
 		return (1);
@@ -68,26 +67,13 @@ static char	*get_heredoc_pos(char *str)
 	return (NULL);
 }
 
-static char	*temp_filename(int hd_no)
-{
-	char	filename[30];
-	char	*num_str;
-
-	ft_bzero(filename, 30);
-	num_str = ft_itoa(hd_no);
-	ft_strlcat(filename, "/tmp/heredoc", 30);
-	ft_strlcat(filename, num_str, 30);
-	free(num_str);
-	return (ft_strdup(filename));
-}
-
 static void	read_heredoc(int *exit_stat, t_env *ms_env, char *delim, int hd_no)
 {
 	char	*line_read;
 	char	*filename;
 	int		tmp_fd;
 
-	filename = temp_filename(hd_no);
+	filename = tmp_filename(hd_no);
 	tmp_fd = open_temp_file(filename, delim, &ms_env);
 	free(filename);
 	line_read = readline("> ");

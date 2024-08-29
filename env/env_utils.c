@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 17:07:14 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 01:48:15 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 15:24:16 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,8 @@ char	**ms_env_to_envp(t_env *ms_env)
 	char	**envp;
 	t_env	*tmp;
 	size_t	i;
-	size_t	env_size;
 
-	env_size = get_env_size(ms_env) + 1;
-	envp = malloc(env_size * sizeof(char *));
+	envp = malloc((get_env_size(ms_env) + 1) * sizeof(char *));
 	if (!envp)
 		return (NULL);
 	tmp = ms_env;
@@ -104,6 +102,13 @@ char	**ms_env_to_envp(t_env *ms_env)
 	while (tmp)
 	{
 		envp[i] = ft_strdup(tmp->key_pair);
+		if (!envp[i])
+		{
+			while (i > 0)
+				free(envp[--i]);
+			free(envp);
+			return (NULL);
+		}
 		i++;
 		tmp = tmp->next;
 	}

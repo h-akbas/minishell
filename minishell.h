@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 15:12:24 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 17:21:37 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int			redirect_fd(int fd1, int fd2);
 int			redirect_input(char *cmd);
 int			redirect_output(char *cmd);
 void		redirect_heredoc(char *cmd, int hd_no);
+char		*tmp_filename(int hd_no);
 
 int			handle_heredoc(char *input, int *exit_stat, t_env *ms_env);
 char		*get_label_name(char *redir_str);
@@ -147,6 +148,6 @@ void		ft_strclr(char *s);
 void		remove_quotes(char *cmd);
 void		process_heredoc_line(char **line_read, int *tmp_fd,
 				t_env *ms_env, int *exit_stat);
-int	open_temp_file(char *filename, char *delim, t_env **ms_env);
+int			open_temp_file(char *filename, char *delim, t_env **ms_env);
 
 #endif

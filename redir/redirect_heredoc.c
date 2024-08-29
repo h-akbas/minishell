@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:21:11 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/31 21:26:41 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 16:46:33 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-static char	*tmp_filename(int hd_no)
+char	*tmp_filename(int hd_no)
 {
-	char	filename[30];
+	char	filename[50];
 	char	*number_str;
+	char	*result;
 
-	ft_bzero(filename, 30);
+	ft_bzero(filename, sizeof(filename));
 	number_str = ft_itoa(hd_no);
-	if (!hd_no)
+	if (!number_str)
 		return (NULL);
-	ft_strlcat(filename, "/tmp/heredoc", 30);
-	ft_strlcat(filename, number_str, 30);
+	ft_strlcat(filename, "/tmp/heredoc", sizeof(filename));
+	ft_strlcat(filename, number_str, sizeof(filename));
 	free(number_str);
-	return (ft_strdup(filename));
+	result = ft_strdup(filename);
+	if (!result)
+		return (NULL);
+	return (result);
 }
 
 void	redirect_heredoc(char *cmd, int hd_no)
