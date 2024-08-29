@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:07:51 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 02:58:12 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 15:14:47 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ static int	exec_heredoc(char *delim, int hd_no, int *exit_stat, t_env *ms_env);
 
 int	handle_heredoc(char *input, int *exit_stat, t_env *ms_env)
 {
-	static int	heredoc_number;
+	static int	heredoc_number = 0;
 	char		*heredoc_pos;
 	char		*delim;
 
-	heredoc_number = -1;
 	heredoc_pos = get_heredoc_pos(input);
 	if (!heredoc_pos)
 		return (1);
@@ -89,16 +88,12 @@ static void	read_heredoc(int *exit_stat, t_env *ms_env, char *delim, int hd_no)
 	int		tmp_fd;
 
 	filename = temp_filename(hd_no);
-	//error_check atılacak
-	tmp_fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	tmp_fd = open_temp_file(filename, delim, &ms_env);
 	free(filename);
 	line_read = readline("> ");
 	while (line_read && !str_equal(line_read, delim))
 	{
-		expand_exit_stat(&line_read, *exit_stat);
-		expand_vars(&line_read, ms_env);
-		ft_putendl_fd(line_read, tmp_fd);
-		free(line_read);
+		process_heredoc_line(&line_read, &tmp_fd, ms_env, exit_stat);
 		line_read = readline("> ");
 	}
 	if (!line_read)

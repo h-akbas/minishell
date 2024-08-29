@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 12:32:14 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/22 22:35:58 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 14:58:00 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,20 @@ static t_env	*create_dummy_env(void)
 {
 	t_env	*dummy_env;
 	char	*cwd;
+	char	*pwd;
 
 	dummy_env = NULL;
-	append_list(create_keypair("PATH", "/usr/bin:/bin:/usr/local/bin"),
-		&dummy_env);
+	append_list("PATH=/usr/bin:/bin:/usr/local/bin", &dummy_env);
 	cwd = getcwd(NULL, 0);
 	if (cwd)
 	{
-		append_list(create_keypair("PWD", cwd), &dummy_env);
+		pwd = ft_strjoin("PWD=", cwd);
+		append_list(pwd, &dummy_env);
+		free(pwd);
 		free (cwd);
 	}
-	append_list(create_keypair("SHLVL", "1"), &dummy_env);
-	append_list(create_keypair("_", "/usr/bin/env"), &dummy_env);
+	append_list("SHLVL=1", &dummy_env);
+	append_list("_=/usr/bin/env", &dummy_env);
+	append_list("OLDPWD=", &dummy_env);
 	return (dummy_env);
 }

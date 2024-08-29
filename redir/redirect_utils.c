@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:33:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/24 14:55:03 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 15:01:26 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	get_next_redir(char *str)
 			if (!*str)
 				return (0);
 		}
-		if (*str == '<' || *str == '>' || *str == -2)
+		if (*str == '<' || *str == '>' || *str == -1)
 			return (*str);
 		str++;
 	}

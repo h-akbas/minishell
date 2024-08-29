@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 02:10:33 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 15:12:24 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,8 @@ char		**ft_split_preserve_quotes(char *cmd, char delimiter);
 void		toggle_quotes(char c, bool *in_quotes, char *quote_char);
 void		ft_strclr(char *s);
 void		remove_quotes(char *cmd);
+void		process_heredoc_line(char **line_read, int *tmp_fd,
+				t_env *ms_env, int *exit_stat);
+int	open_temp_file(char *filename, char *delim, t_env **ms_env);
 
 #endif

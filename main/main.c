@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/22 16:21:34 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 14:58:28 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	if (argc > 1 || !isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO))
 	{
-		ft_putendl_fd("Usage: ./minishell", STDERR_FILENO);
-		close_all_fds();
+		if (!isatty(STDIN_FILENO))
+			ft_putendl_fd("Usage: ./minishell", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	ms_env = init_env(envp);
