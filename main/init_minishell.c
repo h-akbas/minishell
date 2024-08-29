@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 21:59:00 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 02:28:43 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 02:42:51 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ static void	handle_pipe_at_end(char **input)
 	while (pipe_at_end(*input))
 	{
 		next_input = readline("> ");
+		if (!next_input)
+		{
+			free(*input);
+			*input = NULL;
+			return ;
+		}
 		full_input = ft_strjoin(*input, next_input);
 		free(*input);
 		free(next_input);

@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 15:07:51 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/17 13:51:02 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/29 02:58:12 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ static void	read_heredoc(int *exit_stat, t_env *ms_env, char *delim, int hd_no)
 	int		tmp_fd;
 
 	filename = temp_filename(hd_no);
+	//error_check atılacak
 	tmp_fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	free(filename);
 	line_read = readline("> ");
