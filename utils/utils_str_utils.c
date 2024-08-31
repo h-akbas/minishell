@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:15:37 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 00:05:46 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/31 14:39:09 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	move_one_forward(char *str)
 
 bool	ft_isspace(char c)
 {
-	return ((c >= 9 && c <= 13) && c == 32);
+	return ((c >= 9 && c <= 13) || c == 32);
 }

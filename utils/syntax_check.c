@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 21:10:53 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 17:33:38 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/31 18:33:43 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,10 @@ bool	pipe_at_end(char *str)
 	last_non_space = str + ft_strlen(str) - 1;
 	while (last_non_space > str && ft_isspace(*last_non_space))
 		last_non_space--;
-	return (*last_non_space == '|');
+	if (*last_non_space == '|')
+	{
+		put_syntax_error("|");
+		return (true);
+	}
+	return (false);
 }

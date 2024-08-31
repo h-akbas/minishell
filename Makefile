@@ -6,12 +6,12 @@
 #    By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 15:51:42 by hakbas            #+#    #+#              #
-#    Updated: 2024/08/29 15:13:05 by hakbas           ###   ########.fr        #
+#    Updated: 2024/08/31 19:35:21 by hakbas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -g
+CFLAGS			= -Wall -Wextra -Werror -g #-fsanitize=address
 LDFLAGS			= -lreadline -L$(LIBFT_DIR) -lft
 RM				= rm -rf
 NAME			= minishell
@@ -33,7 +33,7 @@ SRCS			= builtin_cd.c builtin_echo.c builtin_env.c builtin_exit.c \
 				utils_label.c utils_quoting.c utils_signals.c \
 				utils_str_check.c utils_str_utils.c init_minishell.c shlvl.c \
 				exec_split_args_utils.c exec_split_args_utils2.c \
-				heredoc_handler_utils.c
+				heredoc_handler_utils.c utils_merge_sort.c
 
 LIBFT_DIR		= ./libft
 LIBFT			= $(LIBFT_DIR)/libft.a

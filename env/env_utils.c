@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 17:07:14 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 15:24:16 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/31 19:38:40 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_env	*get_env_node(char *name, t_env *ms_env)
 	return (NULL);
 }
 
-void	update_env_var(char *name, char *value, t_env *ms_env)
+/* void	update_env_var(char *name, char *value, t_env *ms_env)
 {
 	t_env	*tmp;
 	char	*new_kp;
@@ -70,6 +70,27 @@ void	update_env_var(char *name, char *value, t_env *ms_env)
 	while (*value)
 		new_kp[i++] = *value++;
 	new_kp[i] = '\0';
+	tmp->key_pair = new_kp;
+} */
+
+void	update_env_var(char *name, char *value, t_env *ms_env)
+{
+	t_env	*tmp;
+	char	*new_kp;
+
+	if (!name || !value)
+		return ;
+	tmp = get_env_node(name, ms_env);
+	new_kp = create_keypair(name, value);
+	if (!new_kp)
+		return ;
+	if (!tmp)
+	{
+		append_list(new_kp, &ms_env);
+		free(new_kp);
+		return ;
+	}
+	free(tmp->key_pair);
 	tmp->key_pair = new_kp;
 }
 

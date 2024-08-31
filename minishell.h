@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 17:21:37 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/31 20:46:07 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define CMD_NOT_FOUND 127
 # define NOT_EXECUTABLE 126
 # define CMD_NOT_FOUND_MSG	"command not found"
-# define NOT_EXECUTABLE_MSG "Is a directory"
+# define NOT_EXECUTABLE_MSG "is a directory"
 # define DEFAULT_PATH "/usr/bin:/bin:/usr/local/bin"
 
 //typedefs
@@ -149,5 +149,6 @@ void		remove_quotes(char *cmd);
 void		process_heredoc_line(char **line_read, int *tmp_fd,
 				t_env *ms_env, int *exit_stat);
 int			open_temp_file(char *filename, char *delim, t_env **ms_env);
+void		merge_sort(t_env **head_ref);
 
 #endif

@@ -6,15 +6,15 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:58:49 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 15:15:01 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/08/31 18:33:14 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <readline/readline.h>
 #include "../minishell.h"
 #include <stdlib.h>
 #include <sys/fcntl.h>
-#include <stdio.h>
-#include <readline/readline.h>
 #include "../libft/libft.h"
 
 int	open_temp_file(char *filename, char *delim, t_env **ms_env)
