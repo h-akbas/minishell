@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:36:30 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/21 21:11:34 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/01 16:21:08 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,14 @@ void	close_all_fds(void)
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
+}
+
+int	is_valid_fd(int fd)
+{
+	struct	stat buf;
+
+	if (fstat(fd, &buf) == 0)
+		return (1);
+	else
+		return (0);
 }

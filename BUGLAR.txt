@@ -9,4 +9,8 @@ cat < input.txt
 olmayan ya da izni olmayan dosya olunca redirect fd hata veriyor. ÇÖZÜLDÜ.
 
 cat <infile >outfile
-	infile: geçerli outfile: geçersiz iken düzgün mesaj vermiyor. Redirect'e bakılması gerekir. 
+	infile: geçerli outfile: geçersiz iken düzgün mesaj vermiyor. Redirect'e bakılması gerekir. ÇÖZÜLDÜ ama test etmek gerekiyor.
+
+!!!! builtin exit'te leak var
+		exit 1 (2 byte leak veriyor)
+		exit a ()

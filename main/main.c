@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:16:35 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/31 20:48:36 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/01 16:27:50 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	main(int argc, char **argv, char **envp)
 	t_env	*ms_env;
 
 	(void)argv;
-	if (argc > 1 || !isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO))
+	if (argc > 1 /* || !isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO) */)
 	{
-		if (!isatty(STDIN_FILENO))
-			ft_putendl_fd("Usage: ./minishell", STDERR_FILENO);
+/* 		if (!isatty(STDIN_FILENO))
+			ft_putendl_fd("Usage: ./minishell", STDERR_FILENO); */
 		return (EXIT_FAILURE);
 	}
 	ms_env = init_env(envp);
