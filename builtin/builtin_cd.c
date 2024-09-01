@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:27:27 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/01 23:36:31 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 00:24:26 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static char	*construct_path(char **args)
 	char	*path;
 	int		i;
 
-	path = ft_calloc(PATH_MAX, PATH_MAX);
+	path = ft_calloc(PATH_MAX, sizeof(char));
 	if (!path)
 		return (NULL);
 	i = 1;
