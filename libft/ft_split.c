@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 13:03:12 by hakbas            #+#    #+#             */
-/*   Updated: 2023/10/23 15:21:53 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/01 23:52:04 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,10 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 	int		wc;
 
+	if (!s)
+		return (NULL);
 	result = malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!s || !result)
+	if (!result)
 		return (NULL);
 	wc = count_words(s, c);
 	return (fill_result(result, s, c, wc));

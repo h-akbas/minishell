@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:27:27 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/01 17:11:14 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/01 23:36:31 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	cd(char **args, t_env *ms_env)
 	params.is_dir_flag = is_directory(args);
 	params.home_subdir = args[1] && !ft_strncmp(args[1], "~/", 2);
 	params.path = get_cd_path(args, ms_env, &params);
-/* 	if (args[1] && args[2] && !params.is_dir_flag)
-		return (print_error_msg("cd", "too many arguments")); */
 	if (params.path == NULL)
 	{
 		print_error_msg("cd", "Bad address");

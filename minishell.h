@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 17:23:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/01 19:09:04 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/01 23:39:31 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void		expand_vars(char **input, t_env *ms_env);
 void		expand_exit_stat(char **input, int exit_stat);
 bool		valid_varname(char *str);
 bool		is_varname(char c);
-long long	ft_atoll(const char *str);
 bool		ft_isspace(char c);
 bool		pipe_at_end(char *str);
 
@@ -150,5 +149,6 @@ void		process_heredoc_line(char **line_read, int *tmp_fd,
 				t_env *ms_env, int *exit_stat);
 int			open_temp_file(char *filename, char *delim, t_env **ms_env);
 void		merge_sort(t_env **head_ref);
+int			is_valid_fd(int fd);
 
 #endif

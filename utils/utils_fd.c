@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:36:30 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/01 16:21:08 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/01 23:39:58 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	close_all_fds(void)
 
 int	is_valid_fd(int fd)
 {
-	struct	stat buf;
+	struct stat	buf;
 
 	if (fstat(fd, &buf) == 0)
 		return (1);
