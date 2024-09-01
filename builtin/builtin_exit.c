@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:32:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/02 01:46:24 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 01:47:42 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ long long	parse_exit_status(char **args, char *arg, t_env **ms_env)
 		endptr++;
 	while (*endptr && ft_isdigit((unsigned char)*endptr))
 		endptr++;
-	if (*endptr || ((num == LLONG_MAX || num == LLONG_MIN) && is_valid_num(arg)))
+	if (*endptr || ((num == LLONG_MAX || num == LLONG_MIN)
+			&& is_valid_num(arg)))
 	{
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd("exit: ", STDERR_FILENO);
@@ -108,7 +109,6 @@ int	builtin_exit(char **args, t_env **ms_env)
 	if (!args[1] || (!args[2] && (str_equal(args[1], "-9223372036854775808")
 				|| str_equal(args[1], "9223372036854775807"))))
 		exit_shell(args, 0, ms_env);
-	/* if (!is_valid_num(args[1])) */
 	exit_status = parse_exit_status(args, args[1], ms_env);
 	if (args[2])
 	{
