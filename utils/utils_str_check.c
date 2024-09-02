@@ -6,23 +6,24 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 15:01:06 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/31 16:54:11 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 16:55:08 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
+#include "../minishell.h"
 
 bool	is_empty(char *str)
 {
 	if (!str)
-		return (true);
+		return (print_error_msg("", CMD_NOT_FOUND_MSG), true);
 	while (*str)
 	{
 		if (*str != ' ')
 			return (false);
 		str++;
 	}
-	return (true);
+	return (print_error_msg("", CMD_NOT_FOUND_MSG), true);
 }
 
 bool	has_pipe(char *str)

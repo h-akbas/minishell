@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:32:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/02 14:37:55 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 15:54:01 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,11 @@ long long	parse_exit_status(char **args, char *arg, t_env **ms_env)
 {
 	long long	num;
 	char		*endptr;
+	char		*trim;
 
-	num = ft_atoll(arg);
-	endptr = arg;
+	trim = ft_strtrim(arg, " ");
+	num = ft_atoll(trim);
+	endptr = trim;
 	while (*endptr && ft_isspace((unsigned char)*endptr))
 		endptr++;
 	if (*endptr == '-' || *endptr == '+')
@@ -91,14 +93,16 @@ long long	parse_exit_status(char **args, char *arg, t_env **ms_env)
 	while (*endptr && ft_isdigit((unsigned char)*endptr))
 		endptr++;
 	if (args[1][0] == '\0' || *endptr || ((num == LLONG_MAX || num == LLONG_MIN)
-			&& is_valid_num(arg)))
+			&& is_valid_num(trim)))
 	{
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd("exit: ", STDERR_FILENO);
 		ft_putstr_fd(arg, STDERR_FILENO);
 		ft_putstr_fd(": numeric argument required\n", STDERR_FILENO);
+		free(trim);
 		exit_shell(args, 255, ms_env);
 	}
+	free(trim);
 	return (num);
 }
 
@@ -107,6 +111,8 @@ int	builtin_exit(char **args, t_env **ms_env)
 	long long	exit_status;
 
 	ft_putstr_fd("exit\n", STDOUT_FILENO);
+	if (!args || !*args)
+		exit_shell(args, 0, ms_env);
 	if (!args[1] || (!args[2] && (str_equal(args[1], "-9223372036854775808")
 				|| str_equal(args[1], "9223372036854775807"))))
 		exit_shell(args, 0, ms_env);
