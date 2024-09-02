@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:33:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/01 16:27:01 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/03 00:42:39 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ int	redirect_fd(int fd1, int fd2)
 {
 	if (!is_valid_fd(fd1))
 		return (0);
+	if (fd1 == fd2)
+		return (1);
 	if (dup2(fd1, fd2) == -1)
 	{
 		print_error_msg("dup2", strerror(errno));
-		close(fd1);
 		return (0);
 	}
 	close(fd1);

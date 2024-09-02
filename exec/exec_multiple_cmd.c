@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 18:10:07 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 17:34:00 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/03 00:12:09 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,7 @@ static void	restore_org_fds(int org_fds[2])
 {
 	if (org_fds[IN] != -1 && org_fds[IN] != STDIN_FILENO)
 		redirect_fd(org_fds[IN], STDIN_FILENO);
+	if (org_fds[OUT] != -1 && org_fds[OUT] != STDOUT_FILENO)
+		redirect_fd(org_fds[OUT], STDOUT_FILENO);
+
 }
