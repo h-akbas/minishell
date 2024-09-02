@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 15:01:06 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/02 16:55:08 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 17:14:18 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 bool	is_empty(char *str)
 {
 	if (!str)
-		return (print_error_msg("", CMD_NOT_FOUND_MSG), true);
+		return (true);
 	while (*str)
 	{
 		if (*str != ' ')
 			return (false);
 		str++;
 	}
-	return (print_error_msg("", CMD_NOT_FOUND_MSG), true);
+	return (true);
 }
 
 bool	has_pipe(char *str)

@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 15:23:39 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/29 00:11:41 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 17:19:10 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ char	**split_args(char *cmd)
 	replace_spaces(cmd, '\'');
 	exec_args = ft_split_preserve_quotes(cmd, ' ');
 	if (!exec_args)
+	{
 		return (NULL);
+	}
 	remove_quotes_preserved(exec_args);
 	restore_spaces(exec_args);
 	return (exec_args);

@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:01:06 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/02 16:56:03 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 18:04:15 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ bool	input_error(char *input, int *exit_stat, t_env *ms_env)
 
 	ret = false;
 	if (is_empty(input))
-	{
-		*exit_stat = 127;
 		ret = true;
-	}
 	else if (quoting_error(input))
 	{
 		*exit_stat = 2;
