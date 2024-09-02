@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndogan <ndogan@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:32:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/02 11:43:38 by ndogan           ###   ########.fr       */
+/*   Updated: 2024/09/02 14:37:55 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ long long	parse_exit_status(char **args, char *arg, t_env **ms_env)
 		endptr++;
 	while (*endptr && ft_isdigit((unsigned char)*endptr))
 		endptr++;
-	if (*endptr || ((num == LLONG_MAX || num == LLONG_MIN)
+	if (args[1][0] == '\0' || *endptr || ((num == LLONG_MAX || num == LLONG_MIN)
 			&& is_valid_num(arg)))
 	{
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
