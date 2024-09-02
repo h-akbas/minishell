@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:00:29 by hakbas            #+#    #+#             */
-/*   Updated: 2024/07/21 21:13:53 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 20:29:12 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,18 @@ void	update_wd(t_env *ms_env)
 
 	pwd = get_env_value("PWD", ms_env);
 	oldpwd = get_env_value("OLDPWD", ms_env);
-	if (oldpwd && pwd && *pwd)
-		update_env_var("OLDPWD", pwd, ms_env);
 	if (pwd && *pwd)
+	{
+		if (!oldpwd || !*oldpwd)
+			update_env_var("OLDPWD", pwd, ms_env);
+		else
+			update_env_var("OLDPWD", pwd, ms_env);
 		update_env_var("PWD", getcwd(cwd, PATH_MAX), ms_env);
+	}
+	else
+	{
+		update_env_var("PWD", getcwd(cwd, PATH_MAX), ms_env);
+	}
 }
 
 void	declare_statement(t_env *env)

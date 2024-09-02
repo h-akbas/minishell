@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 16:58:53 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/02 15:36:09 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 19:43:09 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	exec_external(char **args, t_env *ms_env)
 
 	cmd = args[0];
 	if (is_empty(cmd))
-		external_exit(args, ms_env, EXIT_SUCCESS);
+		external_exit(args, ms_env, CMD_NOT_FOUND);
 	if (is_folder(cmd))
 		external_exit(args, ms_env, NOT_EXECUTABLE);
 	path = get_path(cmd, ms_env);

@@ -19,3 +19,4 @@ cd adsasdad yazınca cd 1 döndürecek. exit attıktan sonra da 1 dönmesi lazı
 bash'te 1 yazıyor ama biz exit'i argümansız yollayınca bir önceki komuta bakmaksızın exit 0 atıyor.
 
 exit "    1       " yapınca numeric argument veriyor. Boşlukları silip sayıyı kullanması lazım
+exit "             " minishell çıkıyor bash hata veriyor

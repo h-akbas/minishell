@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 14:55:00 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/02 17:25:17 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/02 20:29:53 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	single_cmd(char	*cmd, t_env **ms_env)
 	free (cmd);
 	if (!args)
 		return (EXIT_FAILURE);
-//	if (all_spaces(args[0]))
 	if (is_builtin(args[0]))
 		status = exec_builtin(args, ms_env);
 	else
