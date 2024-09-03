@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:15:37 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/31 14:39:09 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/03 16:40:10 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ bool	str_equal(const char *str1, const char *str2)
 
 void	move_one_forward(char *str)
 {
+	if (str == NULL || *str == '\0')
+		return ;
 	ft_memmove(str, str + 1, ft_strlen(str + 1) + 1);
 }
 

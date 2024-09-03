@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:32:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/02 23:46:44 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/03 17:57:04 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ long long	parse_exit_status(char **args, char *arg, t_env **ms_env)
 		endptr++;
 	while (*endptr && ft_isdigit((unsigned char)*endptr))
 		endptr++;
-	if (args[1][0] == '\0' || *endptr || is_empty(arg) || ((num == LLONG_MAX || num == LLONG_MIN)
-			&& is_valid_num(trim)))
+	if (args[1][0] == '\0' || *endptr || is_empty(arg)
+		|| ((num == LLONG_MAX || num == LLONG_MIN) && is_valid_num(trim)))
 	{
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd("exit: ", STDERR_FILENO);

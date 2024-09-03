@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 17:07:14 by hakbas            #+#    #+#             */
-/*   Updated: 2024/08/31 19:38:40 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/03 17:02:27 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,34 +44,6 @@ t_env	*get_env_node(char *name, t_env *ms_env)
 	}
 	return (NULL);
 }
-
-/* void	update_env_var(char *name, char *value, t_env *ms_env)
-{
-	t_env	*tmp;
-	char	*new_kp;
-	int		i;
-
-	tmp = get_env_node(name, ms_env);
-	if (!tmp)
-	{
-		new_kp = create_keypair(name, value);
-		append_list(new_kp, &ms_env);
-		free(new_kp);
-		return ;
-	}
-	free (tmp->key_pair);
-	new_kp = malloc((ft_strlen(name) + ft_strlen(value) + 2) * sizeof(char));
-	if (!new_kp)
-		return ;
-	i = 0;
-	while (*name)
-		new_kp[i++] = *name++;
-	new_kp[i++] = '=';
-	while (*value)
-		new_kp[i++] = *value++;
-	new_kp[i] = '\0';
-	tmp->key_pair = new_kp;
-} */
 
 void	update_env_var(char *name, char *value, t_env *ms_env)
 {

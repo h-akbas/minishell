@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 19:27:27 by hakbas            #+#    #+#             */
-/*   Updated: 2024/09/02 20:28:35 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/09/03 17:27:37 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	cd(char **args, t_env *ms_env)
 	params.path = get_cd_path(args, ms_env, &params);
 	if (params.path == NULL)
 	{
-		print_error_msg("cd", "Bad address");
 		return (EXIT_FAILURE);
 	}
 	if (chdir(params.path) != 0)
@@ -45,8 +44,7 @@ int	cd(char **args, t_env *ms_env)
 		ft_putendl_fd(params.path, 1);
 	if (params.is_dir_flag || params.home_subdir)
 		free(params.path);
-	update_wd(ms_env);
-	return (EXIT_SUCCESS);
+	return (update_wd(ms_env), EXIT_SUCCESS);
 }
 
 static bool	is_directory(char **args)
@@ -70,9 +68,17 @@ char	*get_cd_path(char **args, t_env *ms_env, t_cd_params *params)
 	char	*path;
 
 	if (!args[1] || str_equal(args[1], "~"))
+	{
 		path = get_env_value("HOME", ms_env);
+		if (!path)
+			print_error_msg("cd", "HOME not set");
+	}
 	else if (args[1] && str_equal(args[1], "-"))
+	{
 		path = get_env_value("OLDPWD", ms_env);
+		if (!path)
+			print_error_msg("cd", "OLDPWD not set");
+	}
 	else if (params->home_subdir)
 		path = get_home_subdir_path(args, ms_env);
 	else if (params->is_dir_flag)
